@@ -23,8 +23,8 @@ const udsagnListe = [
 // Holder styr på hvilket spørgsmål brugeren er nået til
 let nuvaerendeUdsagn = 0;
 
-// her henter vi de HTML elementer vi gerne vil styre med JS
-// vi bruger getElementById for at finde elementet udfra dens id i vores HTML
+// Her henter vi de HTML elementer vi gerne vil styre med JS
+// Vi bruger getElementById for at finde elementet udfra dens id i vores HTML
 // Vi gemmer elementerne i variabler så vi nemmere kan ændre eller vise dem 
 const udsagn = document.getElementById("udsagn");
 const myteBtn = document.getElementById("myteBtn");
@@ -33,6 +33,7 @@ const svarBoks=document.getElementById("svarBoks");
 const svar=document.getElementById("svar");
 const forklaring=document.getElementById("forklaring");
 const naesteBtn=document.getElementById("naesteBtn");
+const quizside = document.getElementById("quizside");
 
 // Viser spørgsmålet på skærmen 
 function visUdsagn() {
@@ -54,10 +55,10 @@ function tjekSvar(brugerSvar){
     if (brugerSvar === korrektSvar){
 
         //hvis svaret er korrekt så kommer der til at stå korrekt 
-        svar.textContent = "Korrekt!";
+        svar.textContent = "✓ Korrekt!";
     } else {
         // Hvis svaret er forkert så kommer der til at stå forkert
-        svar.textContent = "Forkert!";
+        svar.textContent = "✕ Forkert!";
     }
 
     // Her kommer forklaringen til udsagnet 
@@ -85,7 +86,12 @@ faktaBtn.addEventListener("click",function(){
 // Lytter efter klik på vores næste knap 
 naesteBtn.addEventListener("click", function() {
 
-    //her bruger vi ++ for at gå videre til næste udsagn 
+    // Her gør vi sådan at hvis knappen hedder "afslut" som den gør efter sidste udsagn sendes brugeren tilbage til forsiden
+    if (naesteBtn.textContent === "Afslut") {
+        window.location.href = "index.html";
+        return;
+    }
+    // Her bruger vi ++ for at gå videre til næste udsagn 
     nuvaerendeUdsagn ++ ;
 
     // Vi tjekker om der er flere udsagn
@@ -93,12 +99,26 @@ naesteBtn.addEventListener("click", function() {
 
         // Hvis der er flere udsagn vises det næste
         visUdsagn();
-    } else{
+    } else {
 
-        // Hvis der ikke er flere udsagn så vises en slut tekst
-        udsagn.textContent = "Du er færdig!"
+    // Fjerner teksten i udsagnsboksen
+    udsagn.textContent = "";
 
-        // Svarboks skjules 
-        svarBoks.style.display = "none";
+    // Skjuler teksten "Hvad tror du?"
+    document.querySelector("#quizside p").style.display = "none";
+
+    // Her skjuler vi knapperne
+    myteBtn.style.display = "none";
+    faktaBtn.style.display = "none";
+
+    // Her vises en afsluttende besked til brugeren
+    svar.textContent = "Tillykke, du er færdig!";
+    forklaring.textContent = "Tak fordi du gennemførte quizzen.";
+
+    // Det ændrer teksten på knappen fra "Næste" til "Afslut"
+    naesteBtn.textContent = "Afslut";
+
+    // Gør at afslutningsboksen vises på skærmen
+    svarBoks.style.display = "block";
     }
 });

@@ -53,9 +53,10 @@ h1 {
 
 
 
-/* css til siden med fakta og myter */
+/* !!!!!!!! HER CSS STARTER MYTER OG FAKTA !!!!!!!! */
 #myteBtn,
-#faktaBtn {
+#faktaBtn, 
+#naesteBtn {
 
     width: 150px;
     height: 90px;
@@ -109,4 +110,20 @@ h1 {
     font-size: 22px;
 
     margin-bottom: 30px;
+}
+
+#svarBoks {
+    display: none;
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    min-height: 250px;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    z-index: 10;
 }
