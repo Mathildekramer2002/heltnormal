@@ -1,0 +1,57 @@
+/* Gør at siden fylder hele vinduet */
+body {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 60px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+/* Styling af containeren som indeholder alle boblerne */
+#bobbelContainer {
+
+    /* Gør at boblerne kan placeres ved siden af hinanden */
+    display: flex;
+
+    align-items: center;
+
+    /* Fordeler pladsen mellem boblerne */
+    justify-content: space-around;
+    /* Fordeler boblerne på rækker */
+    flex-wrap: wrap;
+}
+
+
+/* Her styler vi hver enkelt bobbel */
+.bobbel {
+
+    /* Sætter bredden og højden på boblen */
+    width: 500px;
+    height: 300px;
+
+    /* Billede */
+    background-image: url("/image/sky.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    /* Gør boblen til en flex-container */
+    display: flex;
+
+    /* Tekst */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
+
+
+

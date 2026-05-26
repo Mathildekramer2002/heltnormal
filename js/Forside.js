@@ -8,6 +8,7 @@ const bobler = [
         navn: "Myter og fakta",
         side: "myterogfakta.html"
     
+    
     },
 
     {
