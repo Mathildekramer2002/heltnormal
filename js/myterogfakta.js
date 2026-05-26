@@ -12,9 +12,93 @@ const udsagnListe = [
 
     {
         id: 2,
-        navn: "Personer med ADHD kan ikke koncentrere sig.",
-        side: "Myte",
+        udsagn: "Personer med ADHD kan ikke koncentrere sig.",
+        svar: "Myte",
         forklaring: "Personer med ADHD kan ofte koncentrere sig godt om aktiviteter, der interesserer dem meget. Udfordringen handler typisk om at regulere og styre opmærksomheden, ikke om at mangle evnen til at koncentrere sig."
     },
 
 ];
+
+
+// Holder styr på hvilket spørgsmål brugeren er nået til
+let nuvaerendeUdsagn = 0;
+
+// her henter vi de HTML elementer vi gerne vil styre med JS
+// vi bruger getElementById for at finde elementet udfra dens id i vores HTML
+// Vi gemmer elementerne i variabler så vi nemmere kan ændre eller vise dem 
+const udsagn = document.getElementById("udsagn");
+const myteBtn = document.getElementById("myteBtn");
+const faktaBtn = document.getElementById("faktaBtn");
+const svarBoks=document.getElementById("svarBoks");
+const svar=document.getElementById("svar");
+const forklaring=document.getElementById("forklaring");
+const naesteBtn=document.getElementById("naesteBtn");
+
+// Viser spørgsmålet på skærmen 
+function visUdsagn() {
+    udsagn.textContent = udsagnListe[nuvaerendeUdsagn].udsagn;
+
+// Når man har svaret og trykkere videre forsvinder svarboksen igen og et nyt udsagn kommer frem 
+svarBoks.style.display = "none";
+}
+
+// Vi kalder på funktionen så udsagnet vises 
+visUdsagn();
+
+// Vi tjekker hvad brugeren har svaret 
+function tjekSvar(brugerSvar){
+    // Her finder vi det rigte svar oppe i vores array på det nusvæernede udsagn 
+    const korrektSvar = udsagnListe[nuvaerendeUdsagn].svar;
+
+    // Her sammenligner vi brugerens svar med det korrekte svar
+    if (brugerSvar === korrektSvar){
+
+        //hvis svaret er korrekt så kommer der til at stå korrekt 
+        svar.textContent = "Korrekt!";
+    } else {
+        // Hvis svaret er forkert så kommer der til at stå forkert
+        svar.textContent = "Forkert!";
+    }
+
+    // Her kommer forklaringen til udsagnet 
+    forklaring.textContent = udsagnListe [nuvaerendeUdsagn].forklaring;
+
+    // Når brugeren har svaret bliver boksen synlig
+    svarBoks.style.display = "block";
+}
+
+// Her lytter vi efter klik på vores myteknap 
+myteBtn.addEventListener("click",function(){
+
+    // Her sender vi svaret ind i funktionen når brugern klikker på knappen 
+    tjekSvar("Myte");
+});
+
+// Her gør vi det samme med fakta knappen 
+faktaBtn.addEventListener("click",function(){
+
+    // Her sender vi svaret ind i funktionen når brugern klikker på knappen 
+    tjekSvar("Fakta");
+});
+
+
+// Lytter efter klik på vores næste knap 
+naesteBtn.addEventListener("click", function() {
+
+    //her bruger vi ++ for at gå videre til næste udsagn 
+    nuvaerendeUdsagn ++ ;
+
+    // Vi tjekker om der er flere udsagn
+    if (nuvaerendeUdsagn < udsagnListe.length){
+
+        // Hvis der er flere udsagn vises det næste
+        visUdsagn();
+    } else{
+
+        // Hvis der ikke er flere udsagn så vises en slut tekst
+        udsagn.textContent = "Du er færdig!"
+
+        // Svarboks skjules 
+        svarBoks.style.display = "none";
+    }
+});
