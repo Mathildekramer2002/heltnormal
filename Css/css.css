@@ -53,5 +53,60 @@ h1 {
 
 
 
+/* css til siden med fakta og myter */
+#myteBtn,
+#faktaBtn {
+
+    width: 150px;
+    height: 90px;
+
+    /* Fjerner kanten på den oprindelige knap*/
+    border: none;
+
+    background-image: url("/image/sky.svg");
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /* Fjerner baggrunden på knappen */
+    background-color: transparent;
+
+    font-size: 20px;
+    font-weight: bold;
+
+}
 
 
+/* Centrerer hele indholdet */
+#quizside {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    margin-top: 100px;
+}
+
+
+/* Styler boksen rundt om udsagnet */
+#udsagn {
+
+    border: 3px solid #000000;
+
+    border-radius: 20px;
+
+    padding: 40px;
+
+    width: 500px;
+
+    text-align: center;
+
+    background-color: white;
+
+    font-size: 22px;
+
+    margin-bottom: 30px;
+}
