@@ -1,59 +1,112 @@
-/* Gør at siden fylder hele vinduet */
+/* Gør at hele siden fylder hele skærmen */
 body {
     width: 100%;
     min-height: 100vh;
-    margin: 0;
-    background-color: #F8F4EE;
-    font-family: "Oswald", sans-serif;
 
+    /* Fjerner standard mellemrum fra browseren */
+    margin: 0;
+
+    background-color: #F8F4EE;
+
+    /* Font til hele siden */
+    font-family: "Oswald", sans-serif;
 }
 
+
+/* Generel styling af alle h1 overskrifter */
 h1 {
+
+    /* Centrerer teksten */
     text-align: center;
+
     font-size: 75px;
+
+    /* Afstand over og under */
     margin-top: 25px;
     margin-bottom: 20px;
+
+    /* Tekstfarve */
     color: #4A423D;
 }
-/* Styling af containeren som indeholder alle boblerne */
-#bobbelContainer {
 
-    /* Gør at boblerne kan placeres ved siden af hinanden */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!! HER STARTER CSS FORSIDE !!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+/* Styling af hele forsiden */
+#forside {
+
+    /* så det fylder hele siden */
+    width: 100%;
+    min-height: 100vh;
+
+    /* Gør elementerne nemmere at placere */
     display: flex;
 
+    /* Lægger indholdet under hinanden */
+    flex-direction: column;
+
+    /* Centrerer indholdet vandret */
     align-items: center;
 
-    /* Fordeler pladsen mellem boblerne */
-    justify-content: space-around;
-    /* Fordeler boblerne på rækker */
-    flex-wrap: wrap;
+    /* Starter indholdet fra toppen */
+    justify-content: flex-start;
+
+    /* Giver luft i toppen */
+    padding-top: 80px;
 }
 
 
-/* Her styler vi hver enkelt bobbel */
-.bobbel {
+/* Styling af overskriften på forsiden */
+#forside h1 {
 
-    /* Sætter bredden og højden på boblen */
-    width: 550px;
-    height: 340px;
+    font-size: 75px;
 
-    /* Billede */
-    background-image: url("/image/sky.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-
-    /* Gør boblen til en flex-container */
-    display: flex;
-
-    /* Tekst */
-    justify-content: center;
-    align-items: center;
+    /* Fjerner standard margin og giver kun afstand under */
+    margin: 0 0 15px 0;
+    color: #171324;
     text-align: center;
 
-    font-size: 36px;
+    /* det flytter overskriften mod venstre */
+    margin-right: 470px;
+}
+
+
+/* Styling af containeren som indeholder alle knapperne */
+#bobbelContainer {
+
+    display: flex;
+    /* Lægger knapperne under hinanden */
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 90px;
+    /* Flytter knapperne mod venstre */
+    margin-right: 800px;
+}
+
+
+
+/* Styling af hver enkelt knap */
+.bobbel {
+
+    width: 450px;
+    height: 90px;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    /* Centrerer teksten til midten */
+    justify-content: center;
+    align-items: center;
+
+    font-size: 30px;
     font-weight: bold;
-    color: #4A423D
+    text-align: center;
+    color: white;
+
+    background-color: #7A6288;
+    border: 3px solid #5D4769;
 }
 
 
