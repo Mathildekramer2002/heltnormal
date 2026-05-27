@@ -83,6 +83,9 @@ function visStatistik(){
     // Her skjuler vi forklaringsboksen indtil brugeren har svaret
     forklaringBoks.style.display = "none";
 
+    // Her nulstilles forklaringsteksen 
+    forklaring.textContent = "";
+
     // Her skjuler vi videre knappen indtil brugeren har svaret 
     videreBtn.style.display = "none"; 
 
