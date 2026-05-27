@@ -4,8 +4,7 @@
 const statistikker = [
   {
     id: 1,
-    udsagn:
-      "Hvor mange børn og unge får en psykisk lidelse inden de fylder 18 år?",
+    udsagn: "Hvor mange børn og unge får en psykisk lidelse inden de fylder 18 år?",
     svar: 15,
     total: 100,
     forklaring:
@@ -26,3 +25,129 @@ const statistikker = [
     forklaring: "En undersøgelse viser at 87% af de adspurgte, har skjult deres psykiske lidelse grundet tidligere negative erfaringer med at være åben.",
   },
 ];
+
+// Her definerer vi vores filer 
+const personTom = "image/person-ikke-fyldt.svg";
+const personFyldt = "image/person-fyldt.svg";
+
+// Her kalder vi på alle elementerne, som vi skal bruge fra vores HTML
+const introBoks = document.querySelector("#introBoks");
+const spilBoks = document.querySelector("#spilBoks");
+const startBtn = document.querySelector("#startBtn");
+const udsagn = document.querySelector("#udsagn");
+const personer = document.querySelector("#personer");
+const videreBtn = document.querySelector("#videreBtn");
+const forklaringBoks = document.querySelector("#forklaringBoks");
+const forklaring = document.querySelector("#forklaring");
+
+// Her laver vi en variabel, der holder styr på, hvilken statistik brugeren er nået til 
+let nuvaerende = 0; 
+
+// Her laver vi en variabel der gemmer brugerens svar 
+let brugerSvar = 0;
+
+// Holder styr på om det rigtige svar er vist 
+let rigtigtSvarVist = false;
+
+// Vi sætter en lytter på startknappen, som kalder på funktionen "start spil", når der klikkes
+startBtn.addEventListener("click", startSpil);
+
+// Vi sætter en lytter på videreknappen, som kalder på funktionen "næste statistik", når der klikkes
+videreBtn.addEventListener("click", naesteStatistik);
+
+// Nu laver vi funktionen der starter spillet 
+function startSpil(){
+
+    // Her skjuler vi introboksen 
+    introBoks.style.display = "none";
+
+    // Viser spilboksen 
+    spilBoks.style.display = "block";
+
+    // Her kalder vi på funktionen der viser den første statistik 
+    visStatistik();
+}
+
+// Nu laver vi en funktion der viser en statistik på siden 
+function visStatistik(){
+    
+    // Henter den statistik vi er nået til
+    const statistik = statistikker[nuvaerende];
+
+    // Dette gør at udsagnet bliver vist på siden 
+    udsagn.textContent = statistik.udsagn;
+
+    // Her tømmer vi containeren for fyldte personer 
+    personer.innerHTML = "";
+
+    // Her skjuler vi forklaringsboksen indtil brugeren har svaret
+    forklaringBoks.style.display = "none";
+
+    // Her skjuler vi videre knappen indtil brugeren har svaret 
+    videreBtn.style.display = "none"; 
+
+    // Her nulstiller vi brugerens svar
+    brugerSvar = 0;
+    rigtigtSvarVist = false;
+
+    // Her laver vi et loop der viser det antal personer der skal være total 
+    for (let i = 0; i < statistik.total; i++) {
+
+        // Opretter billeder 
+        const person = document.createElement ("img");
+
+        // Alle personer starter som tomme 
+        person.src = personTom;
+
+        // Giver billedet klassen "person" 
+        person.classList.add("person");
+
+        // Gemmer om er valgt eller ej
+        person.dataset.valgt = "false";
+
+        // Vi lytter efter klik på "person"
+        person.addEventListener("click", () => {
+
+            // Brugeren må kun ændre sit svar før det rigtige svar vises
+            if(rigtigtSvarVist === false){
+                person.dataset.valgt = "false";
+                person.src = personTom;
+                brugerSvar--;
+
+                // Hvis personen ikke er valgt biver den udfyldt
+            } else {
+                person.dataset.valgt = "true";
+                person.src = personFyldt;
+                brugerSvar++;
+            }
+
+            // Videre-kanppen vises kun, hvis brugeren har valgt mindst en person 
+            if (brugerSvar > 0){
+                videreBtn.style.display = "block";
+            } else {
+                videreBtn.style.display = "none";
+            }
+        });
+
+        // Her sætter vi personen ind i HTML containeren 
+        personer.appendChild(person);
+    }
+}
+
+// Her laver vi en funktion der fylder brugerens valgte personer ud 
+function udfyldBrugerSvar(antal){
+
+    // Her kalder vi på alle vores personer 
+    const allePersoner = document.querySelectorAll(".person");
+
+    // Her laver vi et foreach loop der gennemgår alle personer
+    allePersoner.forEach((person, index)=>{
+
+        // Her laver vi en if-sætning der reagere på antallet af valgte personer 
+        if(index < antal){
+            person.src = personFyldt;
+        } else {
+            person.src = personTom;
+        }
+    });
+}
