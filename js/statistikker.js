@@ -6,7 +6,7 @@ const statistikker = [
     id: 1,
     udsagn: "Hvor mange børn og unge får en psykisk lidelse inden de fylder 18 år?",
     svar: 15,
-    total: 100,
+    total: 10,
     forklaring:
       "Omkring 15% af alle børn og unge har været i behandling for en psykisk lidelse inden de fylder 18 år.",
   },
@@ -20,7 +20,7 @@ const statistikker = [
   {
     id: 3,
     udsagn: "Hvor mange fortæller ikke om deres psykiske sygdom, i frygt for negative kommentarer",
-    svar: 8-9,
+    svar: 8,
     total: 10,
     forklaring: "En undersøgelse viser at 87% af de adspurgte, har skjult deres psykiske lidelse grundet tidligere negative erfaringer med at være åben.",
   },
@@ -106,48 +106,78 @@ function visStatistik(){
         person.dataset.valgt = "false";
 
         // Vi lytter efter klik på "person"
-        person.addEventListener("click", () => {
+       person.addEventListener("click", () => {
 
-            // Brugeren må kun ændre sit svar før det rigtige svar vises
-            if(rigtigtSvarVist === false){
-                person.dataset.valgt = "false";
-                person.src = personTom;
-                brugerSvar--;
+         // Brugeren må kun ændre sit svar før det rigtige svar vises
+         if (rigtigtSvarVist === false) {
 
-                // Hvis personen ikke er valgt biver den udfyldt
-            } else {
-                person.dataset.valgt = "true";
-                person.src = personFyldt;
-                brugerSvar++;
-            }
+           // Hvis personen allerede er valgt, bliver den tom igen
+           if (person.dataset.valgt === "true") {
+             person.dataset.valgt = "false";
+             person.src = personTom;
+             brugerSvar--;
 
-            // Videre-kanppen vises kun, hvis brugeren har valgt mindst en person 
-            if (brugerSvar > 0){
-                videreBtn.style.display = "block";
-            } else {
-                videreBtn.style.display = "none";
-            }
-        });
+           } else {
+
+             // Hvis personen ikke er valgt, bliver den udfyldt
+             person.dataset.valgt = "true";
+             person.src = personFyldt;
+             brugerSvar++;
+           }
+
+           // Videre-knappen vises kun, hvis brugeren har valgt mindst én person
+           if (brugerSvar > 0) {
+             videreBtn.style.display = "block";
+           } else {
+             videreBtn.style.display = "none";
+           }
+         }
+       });
 
         // Her sætter vi personen ind i HTML containeren 
         personer.appendChild(person);
     }
 }
 
-// Her laver vi en funktion der fylder brugerens valgte personer ud 
-function udfyldBrugerSvar(antal){
-
-    // Her kalder vi på alle vores personer 
+// Her vises det rigtige svar 
+function visRigtigtSvar(){
+    const statistik = statistikker[nuvaerende];
     const allePersoner = document.querySelectorAll(".person");
 
-    // Her laver vi et foreach loop der gennemgår alle personer
-    allePersoner.forEach((person, index)=>{
-
-        // Her laver vi en if-sætning der reagere på antallet af valgte personer 
-        if(index < antal){
+    allePersoner.forEach((person, index) => {
+        if (index < statistik.svar){
             person.src = personFyldt;
         } else {
             person.src = personTom;
         }
     });
+
+    forklaring.textContent = statistik.forklaring; 
+    forklaringBoks.style.display = "block";
+
+    rigtigtSvarVist = true;
 }
+
+// Her styre vi knapperne videre/næste/afslut
+function naesteStatistik(){
+    if (rigtigtSvarVist === false){
+        visRigtigtSvar();
+        videreBtn.textContent = "Næste"; 
+    } else {
+        nuvaerende++;
+        if(nuvaerende < statistikker.length){
+            visStatistik();
+        } else {
+            udsagn.textContent = "Tillykke du er færdig";
+            personer.innerHTML = "";
+            forklaringBoks.style.display = "none"; 
+            videreBtn.textContent = "Afslut";
+            videreBtn.style.display = "block";
+
+            videreBtn.onclick = () => {
+                window.location.href = "index.HTML";
+            };
+        }
+    }
+}
+
