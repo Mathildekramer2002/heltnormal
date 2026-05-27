@@ -48,4 +48,66 @@ startBtn.addEventListener("click", startSpil);
 // Vi sætter en lytter på videreknappen, som kalder på funktionen "næste statistik", når der klikkes
 videreBtn.addEventListener("click", naesteStatistik);
 
+// Nu laver vi funktionen der starter spillet 
+function startSpil(){
 
+    // Her skjuler vi introboksen 
+    introBoks.style.display = "none";
+
+    // Viser spilboksen 
+    spilBoks.style.display = "block";
+
+    // Her kalder vi på funktionen der viser den første statistik 
+    visStatistik();
+}
+
+// Nu laver vi en funktion der viser en statistik på siden 
+function visStatistik(){
+    
+    // Henter den statistik vi er nået til
+    const statistik = statistikker[nuvaerende];
+
+    // Dette gør at udsagnet bliver vist på siden 
+    udsagn.textContent = statistik.udsagn;
+
+    // Her tømmer vi containeren for fyldte personer 
+    personer.innerHTML = "";
+
+    // Her skjuler vi forklaringsboksen indtil brugeren har svaret
+    forklaringBoks.style.display = "none";
+
+    // Her skjuler vi videre knappen indtil brugeren har svaret 
+    videreBtn.style.display = "none"; 
+
+    // Her nulstiller vi brugerens svar
+    brugerSvar = 0;
+
+    // Her laver vi et loop der viser det antal personer der skal være total 
+    for (let i = 0; i < statistik.total; i++) {
+
+        // Opretter billeder 
+        const person = document.createElement ("img");
+
+        // Alle personer starter som tomme 
+        person.src = "persontom";
+
+        // Giver billedet klassen "person" 
+        person.classList.add("person");
+
+        // Vi lytter efter klik på "person"
+        person.addEventListener("click", () => {
+
+            // Her gemmer vi, hvor mange personer brugeren har valgt
+            brugerSvar = i + 1;
+
+            // Her kalder vi på funktionen der fylder personerne ud 
+            udfyldBrugerSvar(brugerSvar);
+
+            // Her viser vi videreknappen når brugeren har valgt antal personer 
+            videreBtn.style.display = "block";
+        });
+
+        // Her sætter vi personen ind i HTML containeren 
+        personer.appendChild(person);
+    }
+}
