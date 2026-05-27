@@ -83,6 +83,9 @@ function visStatistik(){
     // Her skjuler vi forklaringsboksen indtil brugeren har svaret
     forklaringBoks.style.display = "none";
 
+    // Her nulstilles forklaringsteksen 
+    forklaring.textContent = "";
+
     // Her skjuler vi videre knappen indtil brugeren har svaret 
     videreBtn.style.display = "none"; 
 
@@ -152,8 +155,11 @@ function visRigtigtSvar(){
         }
     });
 
-    forklaring.textContent = statistik.forklaring; 
-    forklaringBoks.style.display = "block";
+    // Her erstatter vi udsagnet med forklaringen
+    udsagn.textContent = statistik.forklaring;
+
+    // Vi skjuler boksen med udsagnet helt 
+    forklaringBoks.style.display = "none";
 
     rigtigtSvarVist = true;
 }
