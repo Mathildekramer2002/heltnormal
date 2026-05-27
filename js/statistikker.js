@@ -5,7 +5,7 @@ const statistikker = [
   {
     id: 1,
     udsagn: "Hvor mange børn og unge får en psykisk lidelse inden de fylder 18 år?",
-    svar: 15,
+    svar: 2,
     total: 10,
     forklaring:
       "Omkring 15% af alle børn og unge har været i behandling for en psykisk lidelse inden de fylder 18 år.",
@@ -88,6 +88,8 @@ function visStatistik(){
 
     // Her skjuler vi videre knappen indtil brugeren har svaret 
     videreBtn.style.display = "none"; 
+
+    videreBtn.textContent = "Videre";
 
     // Her nulstiller vi brugerens svar
     brugerSvar = 0;
