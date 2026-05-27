@@ -170,7 +170,7 @@ function visRigtigtSvar(){
 function naesteStatistik(){
     if (rigtigtSvarVist === false){
         visRigtigtSvar();
-        videreBtn.textContent = "Næste"; 
+        videreBtn.textContent = "Næste spørgsmål →"; 
     } else {
         nuvaerende++;
         if(nuvaerende < statistikker.length){
