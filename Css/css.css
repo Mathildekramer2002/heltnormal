@@ -109,6 +109,15 @@ h1 {
     border: 3px solid #5D4769;
 }
 
+#hjerneBillede {
+
+    width: 700px;
+    position: absolute;
+
+    right: 80px;
+    top: 120px;
+}
+
 
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 /* !!!!!!!! HER STARTER CSS MYTER OG FAKTA !!!!!!!! */
