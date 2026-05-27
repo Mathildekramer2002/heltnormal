@@ -26,6 +26,10 @@ const statistikker = [
   },
 ];
 
+// Her definerer vi vores filer 
+const personTom = "image/person-ikke-fyldt.svg";
+const personFyldt = "image/person-fyldt.svg";
+
 // Her kalder vi på alle elementerne, som vi skal bruge fra vores HTML
 const introBoks = document.querySelector("#introBoks");
 const spilBoks = document.querySelector("#spilBoks");
@@ -41,6 +45,9 @@ let nuvaerende = 0;
 
 // Her laver vi en variabel der gemmer brugerens svar 
 let brugerSvar = 0;
+
+// Holder styr på om det rigtige svar er vist 
+let rigtigtSvarVist = false;
 
 // Vi sætter en lytter på startknappen, som kalder på funktionen "start spil", når der klikkes
 startBtn.addEventListener("click", startSpil);
@@ -81,6 +88,7 @@ function visStatistik(){
 
     // Her nulstiller vi brugerens svar
     brugerSvar = 0;
+    rigtigtSvarVist = false;
 
     // Her laver vi et loop der viser det antal personer der skal være total 
     for (let i = 0; i < statistik.total; i++) {
@@ -89,25 +97,57 @@ function visStatistik(){
         const person = document.createElement ("img");
 
         // Alle personer starter som tomme 
-        person.src = "persontom";
+        person.src = personTom;
 
         // Giver billedet klassen "person" 
         person.classList.add("person");
 
+        // Gemmer om er valgt eller ej
+        person.dataset.valgt = "false";
+
         // Vi lytter efter klik på "person"
         person.addEventListener("click", () => {
 
-            // Her gemmer vi, hvor mange personer brugeren har valgt
-            brugerSvar = i + 1;
+            // Brugeren må kun ændre sit svar før det rigtige svar vises
+            if(rigtigtSvarVist === false){
+                person.dataset.valgt = "false";
+                person.src = personTom;
+                brugerSvar--;
 
-            // Her kalder vi på funktionen der fylder personerne ud 
-            udfyldBrugerSvar(brugerSvar);
+                // Hvis personen ikke er valgt biver den udfyldt
+            } else {
+                person.dataset.valgt = "true";
+                person.src = personFyldt;
+                brugerSvar++;
+            }
 
-            // Her viser vi videreknappen når brugeren har valgt antal personer 
-            videreBtn.style.display = "block";
+            // Videre-kanppen vises kun, hvis brugeren har valgt mindst en person 
+            if (brugerSvar > 0){
+                videreBtn.style.display = "block";
+            } else {
+                videreBtn.style.display = "none";
+            }
         });
 
         // Her sætter vi personen ind i HTML containeren 
         personer.appendChild(person);
     }
+}
+
+// Her laver vi en funktion der fylder brugerens valgte personer ud 
+function udfyldBrugerSvar(antal){
+
+    // Her kalder vi på alle vores personer 
+    const allePersoner = document.querySelectorAll(".person");
+
+    // Her laver vi et foreach loop der gennemgår alle personer
+    allePersoner.forEach((person, index)=>{
+
+        // Her laver vi en if-sætning der reagere på antallet af valgte personer 
+        if(index < antal){
+            person.src = personFyldt;
+        } else {
+            person.src = personTom;
+        }
+    });
 }
