@@ -35,7 +35,7 @@ const historier = [
 ];
 
 // Her henter vi elementer fra vores html, så vi kan bruge dem i javascript
-const cardContainer = document.querySelector("#cardContainer");
+const cardsContainer = document.querySelector("#cardContainer");
 const personligSide = document.querySelector("#personligSide");
 const videoSide = document.querySelector("#videoSide");
 const video = document.querySelector("#historieVideo");
