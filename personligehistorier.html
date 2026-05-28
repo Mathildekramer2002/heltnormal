@@ -17,6 +17,28 @@
     <!-- Her er vores tilbage knap -->
     <a href="index.html" class="tilbageKnap">←</a>
     
+    <!-- Her laver vi en oversigt over vores 3 fortællinger igennem cards-->
+     <section id="personligSide">
+        <h1> Peronlige Historier </h1>
+        <p id="underTitel"> Vælg en historie og lyt med</p>
+        <div id="cardContainer"></div>
+     </section>
+
+     <!-- Her laver vi vores videovisning, så først vises når der bliver valgt en video -->
+
+     <section id="videoSide">
+        <button id="lukVideo"> x </button>
+        <div id="videoInfo">
+            <h2 id="videoNavn"></h2>
+            <p id="videoDiagnose"></p>
+        </div>
+       <video id="historieVideo"></video>
+
+       <div id="videoControls">
+            <button id="playPauseBtn">▶</button>
+            <input type="range" id="progressBar" value="0" min="0" max="100">
+       </div>
+     </section>
 
 
 
