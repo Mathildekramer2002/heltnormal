@@ -22,7 +22,7 @@ const statistikker = [
     udsagn: "Hvor mange fortæller ikke om deres psykiske sygdom, i frygt for negative kommentarer",
     svar: 8,
     total: 10,
-    forklaring: "En undersøgelse viser at 87% af de adspurgte, har skjult deres psykiske lidelse grundet tidligere negative erfaringer med at være åben.",
+    forklaring: "En undersøgelse viser, at 87 % har skjult deres psykiske lidelse grundet negative erfaringer med åbenhed.",
   },
 ];
 
@@ -39,6 +39,8 @@ const personer = document.querySelector("#personer");
 const videreBtn = document.querySelector("#videreBtn");
 const forklaringBoks = document.querySelector("#forklaringBoks");
 const forklaring = document.querySelector("#forklaring");
+const sporgsmaalTekst = document.getElementById("sporgsmaalTekst");
+const progressFyld = document.getElementById("progressFyld");
 
 // Her laver vi en variabel, der holder styr på, hvilken statistik brugeren er nået til 
 let nuvaerende = 0; 
@@ -76,6 +78,17 @@ function visStatistik(){
 
   // Dette gør at udsagnet bliver vist på siden 
   udsagn.textContent = statistik.udsagn;
+
+      // Her opdaterer vi teksten så brugeren kan se,
+    // hvilket spørgsmål de er nået til
+    sporgsmaalTekst.textContent = 
+    "SPØRGSMÅL " + (nuvaerende + 1) + "/" + statistikker.length;
+
+    // Her regner vi ud hvor meget progress baren skal fyldes
+    let progress = ((nuvaerende + 1) / statistikker.length) * 100;
+
+    // Her ændrer vi bredden på den lilla progress bar
+    progressFyld.style.width = progress + "%";
 
   // Her tømmer vi containeren for fyldte personer 
   personer.innerHTML = "";
@@ -170,22 +183,29 @@ function visRigtigtSvar(){
 function naesteStatistik(){
     if (rigtigtSvarVist === false){
         visRigtigtSvar();
-        videreBtn.textContent = "Næste spørgsmål →"; 
+        if (nuvaerende === statistikker.length - 1) {
+    videreBtn.textContent = "Få din belønning";
+    } else {
+    videreBtn.textContent = "Næste spørgsmål →";
+    }
     } else {
         nuvaerende++;
         if(nuvaerende < statistikker.length){
             visStatistik();
         } else {
-            udsagn.textContent = "Tillykke du er færdig";
+            udsagn.innerHTML = `Tillykke du er færdig <span class="slutUndertekst">Tak fordi du gennemførte quizzen.</span>`;
+            udsagn.classList.add("slutTekst");
+
             personer.innerHTML = "";
             forklaringBoks.style.display = "none"; 
             videreBtn.textContent = "Afslut";
             videreBtn.style.display = "block";
 
             videreBtn.onclick = () => {
-                window.location.href = "index.HTML";
+                window.location.href = "index.html";
             };
         }
     }
 }
+
 
