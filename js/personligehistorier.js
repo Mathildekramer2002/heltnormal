@@ -148,6 +148,21 @@ progressBar.addEventListener("input", () => {
     video.currentTime = nyTid;
 });
 
+// Her laver vi funktionen til krydset, som lukker video-siden
+lukVideo.addEventListener("click", () => {
+
+    // Her stopper vi videon, så den ikke spiller i baggrunden
+    video.pause();
+
+    // Her spoles videon tilbage til start, så den starter forfra, når den åbnes igen
+    video.currentTime = 0;
+
+    // Her skjules video-siden
+    videoSide.style.display = "none";
+
+    // Her vises siden med de 3 cards igen, så brugeren har mulighed for at vælge en ny historie
+    personligSide.style.display = "block";
+});
 
 
 
