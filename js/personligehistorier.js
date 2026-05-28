@@ -4,27 +4,27 @@ const historier = [
     {
         id: 1,
         navn: "Anna",
-        alder: "19",
-        diagnose: "angst",
+        alder: "19 år",
+        diagnose: "Angst",
         billede: "image/Anna.png",
-        video: "image/anna.mp4",
+        video: "image/video/anna.mp4",
         kortTekst: "I lang tid troede jeg bare, at jeg tænkte for meget over tingene."
 
     },
      {
         id: 2,
         navn: "Sofia",
-        alder: "9",
+        alder: "9 år",
         diagnose: "Autisme",
         billede: "image/Sofia.png",
-        video: "image/sofia.mp4",
+        video: "image/video/sofia.mp4",
         kortTekst: "De har aldrig haft et barn som Sofia før."
 
     },
      {
         id: 3,
         navn: "Cecilie",
-        alder: "25",
+        alder: "25 år",
         diagnose: "ADHD",
         billede: "image/Cecilie.png",
         video: "image/cecilie.mp4",
@@ -35,7 +35,7 @@ const historier = [
 ];
 
 // Her henter vi elementer fra vores html, så vi kan bruge dem i javascript
-const cardContainer = document.querySelector("#cardContainer");
+const cardsContainer = document.querySelector("#cardContainer");
 const personligSide = document.querySelector("#personligSide");
 const videoSide = document.querySelector("#videoSide");
 const video = document.querySelector("#historieVideo");
@@ -98,8 +98,11 @@ function visVideo(historie) {
     // Dette gør at browseren indlæser den nye video, hvis man skifter historie
     video.load();
 
+    // Her starter videoen automatisk 
+    video.play();
+
     // Her gør vi så hver gang en ny video åbnes, starter knappen altid som en play-knap
-    playPauseBtn.textContent = "▶";
+    playPauseBtn.textContent = "";
 
     // Her gør vi så vores progress bar nulstilles, når videon starter forfra
     progressBar.value = 0;
@@ -115,7 +118,7 @@ playPauseBtn.addEventListener("click", () => {
         video.play();
 
         // Her ændrer vi ikonet til en pause knap, hvis videon spiller
-    playPauseBtn.textContent = ""
+    playPauseBtn.textContent = "";
 
     }
 
@@ -127,6 +130,42 @@ playPauseBtn.addEventListener("click", () => {
 
 });
 
+// Her gør vi så timeupdate kører hele tiden, mens videon er i gang og følger videoens tid
+
+video.addEventListener("timeupdate", () => {
+
+    // Her regner vi ud hvor meget af videon der er afspillet
+    const procent = (video.currentTime / video.duration) * 100;
+
+    // Her sætter vi værdien på progressbaren, til den vi regnede ud før
+    progressBar.value = procent;
+});
+
+// Her gøres progress-baren interaktiv, så brugeren kan trække i den, og spole frem og tilbage i videon
+progressBar.addEventListener("input", () => {
+
+    // Her regner vi på hvilket tidspunkt i videoen som brugeren har valgt
+    const nyTid = (progressBar.value / 100) * video.duration;
+
+    // Her sender vi videon hen til det valgte tidspunkt
+    video.currentTime = nyTid;
+});
+
+// Her laver vi funktionen til krydset, som lukker video-siden
+lukVideo.addEventListener("click", () => {
+
+    // Her stopper vi videon, så den ikke spiller i baggrunden
+    video.pause();
+
+    // Her spoles videon tilbage til start, så den starter forfra, når den åbnes igen
+    video.currentTime = 0;
+
+    // Her skjules video-siden
+    videoSide.style.display = "none";
+
+    // Her vises siden med de 3 cards igen, så brugeren har mulighed for at vælge en ny historie
+    personligSide.style.display = "block";
+});
 
 
 
