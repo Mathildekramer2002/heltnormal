@@ -31,6 +31,29 @@ h1 {
     color: #4A423D;
 }
 
+.tilbageKnap {
+    position: fixed;
+    top: 25px;
+    left: 30px;
+
+    width: 55px;
+    height: 55px;
+
+
+    color: #5D4769;
+
+    /* Fjerner stregen under linket */
+    text-decoration: none;
+
+    /* Størrelse og styling på pilen */
+    font-size: 42px;
+    font-weight: bold;
+    font-family: "Oswald", sans-serif;
+
+    /* Sørger for at knappen ligger ovenpå andre elementer */
+    z-index: 1000;
+}
+
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 /* !!!!!!!! HER STARTER CSS FORSIDE !!!!!!!! */
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
