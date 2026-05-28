@@ -4,27 +4,27 @@ const historier = [
     {
         id: 1,
         navn: "Anna",
-        alder: "19",
-        diagnose: "angst",
+        alder: "19 år",
+        diagnose: "Angst",
         billede: "image/Anna.png",
-        video: "image/anna.mp4",
+        video: "image/video/anna.mp4",
         kortTekst: "I lang tid troede jeg bare, at jeg tænkte for meget over tingene."
 
     },
      {
         id: 2,
         navn: "Sofia",
-        alder: "9",
+        alder: "9 år",
         diagnose: "Autisme",
         billede: "image/Sofia.png",
-        video: "image/sofia.mp4",
+        video: "image/video/sofia.mp4",
         kortTekst: "De har aldrig haft et barn som Sofia før."
 
     },
      {
         id: 3,
         navn: "Cecilie",
-        alder: "25",
+        alder: "25 år",
         diagnose: "ADHD",
         billede: "image/Cecilie.png",
         video: "image/cecilie.mp4",
@@ -98,8 +98,11 @@ function visVideo(historie) {
     // Dette gør at browseren indlæser den nye video, hvis man skifter historie
     video.load();
 
+    // Her starter videoen automatisk 
+    video.play();
+
     // Her gør vi så hver gang en ny video åbnes, starter knappen altid som en play-knap
-    playPauseBtn.textContent = "▶";
+    playPauseBtn.textContent = "";
 
     // Her gør vi så vores progress bar nulstilles, når videon starter forfra
     progressBar.value = 0;
@@ -115,7 +118,7 @@ playPauseBtn.addEventListener("click", () => {
         video.play();
 
         // Her ændrer vi ikonet til en pause knap, hvis videon spiller
-    playPauseBtn.textContent = ""
+    playPauseBtn.textContent = "";
 
     }
 
@@ -132,7 +135,7 @@ playPauseBtn.addEventListener("click", () => {
 video.addEventListener("timeupdate", () => {
 
     // Her regner vi ud hvor meget af videon der er afspillet
-    const procent = (video.currenttime / video.duration) * 100;
+    const procent = (video.currentTime / video.duration) * 100;
 
     // Her sætter vi værdien på progressbaren, til den vi regnede ud før
     progressBar.value = procent;
