@@ -297,7 +297,7 @@ h1 {
 
     padding: 50px;
 
-    text-align: left;
+    text-align: center;
 
     z-index: 10;
 }
@@ -305,13 +305,44 @@ h1 {
 #svar{
     color: #4A423D;
     font-size: 48px;
-    margin-bottom: 40px;
+    margin-top: 0px;
+    margin-bottom: 20px;
 }
 
 #forklaring{
     color: #4A423D;
     font-size: 30px;
     line-height: 1.5;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#svarIkon {
+    width: 85px;
+    height: 85px;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;  
+
+    color: white;
+    font-size: 55px;
+    font-weight: bold;
+}
+
+.korrektCirkel {
+    background-color: #8FBEA3;
+}
+
+.forkertCirkel {
+    background-color: #D98282;
 }
 
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
