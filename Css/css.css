@@ -85,17 +85,29 @@ h1 {
 /* Styling af overskriften på forsiden */
 #forside h1 {
 
-    font-size: 75px;
+    font-size: 78px;
 
     /* Fjerner standard margin og giver kun afstand under */
     margin: 0 0 15px 0;
-    color: #171324;
+    color: #4A423D;
     text-align: center;
 
     /* det flytter overskriften mod venstre */
-    margin-right: 470px;
+    margin-right: 840px;
 }
 
+#underOverskrift {
+
+    font-size: 36px;
+
+    color: #4A423D;
+
+    margin-top: -20px;
+
+    margin-bottom: 80px;
+
+    margin-right: 660px;
+}
 
 /* Styling af containeren som indeholder alle knapperne */
 #bobbelContainer {
@@ -104,7 +116,7 @@ h1 {
     /* Lægger knapperne under hinanden */
     flex-direction: column;
     gap: 25px;
-    margin-top: 90px;
+    margin-top: 0px;
     /* Flytter knapperne mod venstre */
     margin-right: 800px;
 }
@@ -140,7 +152,7 @@ h1 {
     position: absolute;
 
     right: 80px;
-    top: 120px;
+    top: 140px;
 }
 
 
