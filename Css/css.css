@@ -487,6 +487,21 @@ h1 {
     margin: 0;
 }
 
+.slutTekst {
+    border: none !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+    margin-bottom: 70px !important;
+    margin-top: 70px !important;
+    font-size: 55px !important;
+}
+.slutUndertekst {
+    display: block;
+    font-size: 28px;
+    margin-top: 8px;
+    font-weight: normal;
+}
+
 
 @media screen and (max-width: 1440px) {
 

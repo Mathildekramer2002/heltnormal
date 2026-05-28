@@ -99,6 +99,11 @@ function tjekSvar(brugerSvar){
 
     // Her kommer forklaringen til udsagnet 
     forklaring.textContent = udsagnListe [nuvaerendeUdsagn].forklaring;
+    if (nuvaerendeUdsagn === udsagnListe.length - 1) {
+    naesteBtn.textContent = "Få din belønning";
+    } else {
+    naesteBtn.textContent = "Næste spørgsmål →";
+    }
 
     // Når brugeren har svaret bliver boksen synlig
     svarBoks.style.display = "block";

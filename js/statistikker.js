@@ -22,7 +22,7 @@ const statistikker = [
     udsagn: "Hvor mange fortæller ikke om deres psykiske sygdom, i frygt for negative kommentarer",
     svar: 8,
     total: 10,
-    forklaring: "En undersøgelse viser at 87% af de adspurgte, har skjult deres psykiske lidelse grundet tidligere negative erfaringer med at være åben.",
+    forklaring: "En undersøgelse viser, at 87 % har skjult deres psykiske lidelse grundet negative erfaringer med åbenhed.",
   },
 ];
 
@@ -183,22 +183,29 @@ function visRigtigtSvar(){
 function naesteStatistik(){
     if (rigtigtSvarVist === false){
         visRigtigtSvar();
-        videreBtn.textContent = "Næste spørgsmål →"; 
+        if (nuvaerende === statistikker.length - 1) {
+    videreBtn.textContent = "Få din belønning";
+    } else {
+    videreBtn.textContent = "Næste spørgsmål →";
+    }
     } else {
         nuvaerende++;
         if(nuvaerende < statistikker.length){
             visStatistik();
         } else {
-            udsagn.textContent = "Tillykke du er færdig";
+            udsagn.innerHTML = `Tillykke du er færdig <span class="slutUndertekst">Tak fordi du gennemførte quizzen.</span>`;
+            udsagn.classList.add("slutTekst");
+
             personer.innerHTML = "";
             forklaringBoks.style.display = "none"; 
             videreBtn.textContent = "Afslut";
             videreBtn.style.display = "block";
 
             videreBtn.onclick = () => {
-                window.location.href = "index.HTML";
+                window.location.href = "index.html";
             };
         }
     }
 }
+
 
