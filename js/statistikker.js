@@ -39,6 +39,8 @@ const personer = document.querySelector("#personer");
 const videreBtn = document.querySelector("#videreBtn");
 const forklaringBoks = document.querySelector("#forklaringBoks");
 const forklaring = document.querySelector("#forklaring");
+const sporgsmaalTekst = document.getElementById("sporgsmaalTekst");
+const progressFyld = document.getElementById("progressFyld");
 
 // Her laver vi en variabel, der holder styr på, hvilken statistik brugeren er nået til 
 let nuvaerende = 0; 
@@ -76,6 +78,17 @@ function visStatistik(){
 
   // Dette gør at udsagnet bliver vist på siden 
   udsagn.textContent = statistik.udsagn;
+
+      // Her opdaterer vi teksten så brugeren kan se,
+    // hvilket spørgsmål de er nået til
+    sporgsmaalTekst.textContent = 
+    "SPØRGSMÅL " + (nuvaerende + 1) + "/" + statistikker.length;
+
+    // Her regner vi ud hvor meget progress baren skal fyldes
+    let progress = ((nuvaerende + 1) / statistikker.length) * 100;
+
+    // Her ændrer vi bredden på den lilla progress bar
+    progressFyld.style.width = progress + "%";
 
   // Her tømmer vi containeren for fyldte personer 
   personer.innerHTML = "";
