@@ -345,6 +345,24 @@ h1 {
     background-color: #D98282;
 }
 
+/* CSS der styler badge og teksten */
+#badgeTekst {
+    font-size: 28px;
+    color: #4A423D;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    display: none;
+}
+
+#badge {
+    width: 180px;
+    display: block;
+    margin: 0 auto 30px auto;
+    display: none;
+}
+
+
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 /* !!!!!!!! HER STARTER CSS STATESTIKKER!!!!!!!! */
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */

@@ -142,6 +142,14 @@ naesteBtn.addEventListener("click", function() {
     svar.textContent = "Tillykke, du er færdig!";
     forklaring.textContent = "Tak fordi du gennemførte quizzen.";
 
+    // Her indsættes teksten om at man kan kalde sig Myte-jæger
+    document.querySelector("#badgeTekst").textContent =
+    "Du kan nu kalde dig Mytejæger";
+
+    // Her vises badge-tekst og billede
+    document.querySelector("#badgeTekst").style.display = "block";
+    document.querySelector("#badge").style.display = "block";
+
     // Det ændrer teksten på knappen fra "Næste" til "Afslut"
     naesteBtn.textContent = "Afslut";
 
