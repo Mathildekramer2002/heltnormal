@@ -16,6 +16,26 @@ const udsagnListe = [
         svar: "Myte",
         forklaring: "Personer med ADHD kan ofte koncentrere sig godt om aktiviteter, der interesserer dem meget. Udfordringen handler typisk om at regulere og styre opmærksomheden, ikke om at mangle evnen til at koncentrere sig."
     },
+    {
+        id: 3,
+        udsagn: "Næste 50% Mener at mennesker med en psykisk lidelse er farligere end andre",
+        svar: "Fakta",
+        forklaring: "En dansk undersøgelse viste, at næsten halvdelen af befolkningen mener, at personer med psykisk sygdom ofte er mere farlige end andre. Det viser, hvor stærke fordomme stadig kan være — selvom de fleste mennesker med psykisk sygdom ikke er farlige"
+    },
+
+    {
+        id: 4,
+        udsagn: "Mange skjuler deres psykiske lidelse af frygt for andres reaktioner.",
+        svar: "Fakta",
+        forklaring: "87% af de adspurgte i en undersøgelse havde skjult deres psykiske lidelse på grund af negative erfaringer eller frygt for kommentarer."
+    },
+
+    {
+        id: 5,
+        udsagn: "6 ud af 10 personer med en psykiatrisk diagnose oplever diskrimination",
+        svar: "Myte",
+        forklaring: "En undersøgelse fra Psykiatrifonden viser, at mange oplever negative reaktioner eller forskelsbehandling på grund af deres diagnose."
+    }
 
 ];
 
@@ -34,6 +54,7 @@ const svar=document.getElementById("svar");
 const forklaring=document.getElementById("forklaring");
 const naesteBtn=document.getElementById("naesteBtn");
 const quizside = document.getElementById("quizside");
+const svarIkon = document.getElementById("svarIkon");
 
 // Viser spørgsmålet på skærmen 
 function visUdsagn() {
@@ -55,10 +76,14 @@ function tjekSvar(brugerSvar){
     if (brugerSvar === korrektSvar){
 
         //hvis svaret er korrekt så kommer der til at stå korrekt 
-        svar.textContent = "✓ Korrekt!";
+        svarIkon.textContent = "✓";
+        svarIkon.className = "korrektCirkel";
+        svar.textContent = "Korrekt!";
     } else {
         // Hvis svaret er forkert så kommer der til at stå forkert
-        svar.textContent = "✕ Forkert!";
+        svarIkon.textContent = "✕";
+        svarIkon.className = "forkertCirkel";
+        svar.textContent = "Forkert!";
     }
 
     // Her kommer forklaringen til udsagnet 
@@ -110,8 +135,10 @@ naesteBtn.addEventListener("click", function() {
     // Her skjuler vi knapperne
     myteBtn.style.display = "none";
     faktaBtn.style.display = "none";
+    svarIkon.style.display = "none";
 
     // Her vises en afsluttende besked til brugeren
+    svar.style.marginTop = "60px";
     svar.textContent = "Tillykke, du er færdig!";
     forklaring.textContent = "Tak fordi du gennemførte quizzen.";
 
