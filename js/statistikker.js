@@ -102,7 +102,7 @@ function visStatistik(){
   // Her skjuler vi videre knappen indtil brugeren har svaret 
   videreBtn.style.display = "none"; 
 
-  videreBtn.textContent = "Videre";
+  videreBtn.textContent = "Se svar";
 
   // Her nulstiller vi brugerens svar
   brugerSvar = 0;

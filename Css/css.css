@@ -516,27 +516,12 @@ h1 {
     font-size: 28px;
     margin-top: 8px;
     font-weight: normal;
+    
 }
 
 
-@media screen and (max-width: 1440px) {
 
-    h1 {
-        font-size: 60px;
-    }
 
-    #statistikSide {
-        width: 95%;
-        height: 100vh;
-    }
-
-    button {
-        width: 240px;
-        height: 85px;
-        font-size: 30px;
-    }
-
-}
 
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 /* !!!!!!!! HER STARTER CSS PERSONLIGE HISTORIER !!!!!!!! */
@@ -698,4 +683,23 @@ h1 {
 
 #progressBar {
     flex: 1;
+}
+
+@media screen and (max-width: 1440px) {
+
+    h1 {
+        font-size: 60px;
+    }
+
+    #statistikSide {
+        width: 95%;
+        height: 100vh;
+    }
+
+    button {
+        width: 240px;
+        height: 85px;
+        font-size: 30px;
+    }
+
 }
