@@ -104,8 +104,31 @@ function visVideo(historie) {
     // Her gør vi så vores progress bar nulstilles, når videon starter forfra
     progressBar.value = 0;
 
-
 }
+
+// Her laver vi funktionen til vores play/pause knap
+playPauseBtn.addEventListener("click", () => {
+
+    // Her gør vi så når videon spiller, vil den pause, og omvendt når man trykker på vores knap
+
+    if (video.paused) {
+        video.play();
+
+        // Her ændrer vi ikonet til en pause knap, hvis videon spiller
+    playPauseBtn.textContent = ""
+
+    }
+
+    else {
+        video.pause();
+        // Når videon er sat på pause, bliver ikonet igen til play
+        playPauseBtn.textContent = "▶";
+    }
+
+});
+
+
+
 
 
 
