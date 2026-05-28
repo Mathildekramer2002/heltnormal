@@ -71,77 +71,77 @@ function startSpil(){
 // Nu laver vi en funktion der viser en statistik på siden 
 function visStatistik(){
     
-    // Henter den statistik vi er nået til
-    const statistik = statistikker[nuvaerende];
+  // Henter den statistik vi er nået til
+  const statistik = statistikker[nuvaerende];
 
-    // Dette gør at udsagnet bliver vist på siden 
-    udsagn.textContent = statistik.udsagn;
+  // Dette gør at udsagnet bliver vist på siden 
+  udsagn.textContent = statistik.udsagn;
 
-    // Her tømmer vi containeren for fyldte personer 
-    personer.innerHTML = "";
+  // Her tømmer vi containeren for fyldte personer 
+  personer.innerHTML = "";
 
-    // Her skjuler vi forklaringsboksen indtil brugeren har svaret
-    forklaringBoks.style.display = "none";
+  // Her skjuler vi forklaringsboksen indtil brugeren har svaret
+  forklaringBoks.style.display = "none";
 
-    // Her nulstilles forklaringsteksen 
-    forklaring.textContent = "";
+  // Her nulstilles forklaringsteksen 
+  forklaring.textContent = "";
 
-    // Her skjuler vi videre knappen indtil brugeren har svaret 
-    videreBtn.style.display = "none"; 
+  // Her skjuler vi videre knappen indtil brugeren har svaret 
+  videreBtn.style.display = "none"; 
 
-    videreBtn.textContent = "Videre";
+  videreBtn.textContent = "Videre";
 
-    // Her nulstiller vi brugerens svar
-    brugerSvar = 0;
-    rigtigtSvarVist = false;
+  // Her nulstiller vi brugerens svar
+  brugerSvar = 0;
+  rigtigtSvarVist = false;
 
-    // Her laver vi et loop der viser det antal personer der skal være total 
-    for (let i = 0; i < statistik.total; i++) {
+  // Her laver vi et loop der viser det antal personer der skal være total 
+  for (let i = 0; i < statistik.total; i++) {
 
-        // Opretter billeder 
-        const person = document.createElement ("img");
+    // Opretter billeder 
+    const person = document.createElement ("img");
 
-        // Alle personer starter som tomme 
-        person.src = personTom;
+    // Alle personer starter som tomme 
+    person.src = personTom;
 
-        // Giver billedet klassen "person" 
-        person.classList.add("person");
+    // Giver billedet klassen "person" 
+    person.classList.add("person");
 
-        // Gemmer om er valgt eller ej
-        person.dataset.valgt = "false";
+    // Gemmer om er valgt eller ej
+    person.dataset.valgt = "false";
 
-        // Vi lytter efter klik på "person"
-       person.addEventListener("click", () => {
+    // Her lytter vi efter klik på personen
+    person.addEventListener("click", () => {
 
-         // Brugeren må kun ændre sit svar før det rigtige svar vises
-         if (rigtigtSvarVist === false) {
+      // Brugeren må kun ændre sit svar, før det rigtige svar vises
+        if (rigtigtSvarVist === false) {
 
-           // Hvis personen allerede er valgt, bliver den tom igen
-           if (person.dataset.valgt === "true") {
-             person.dataset.valgt = "false";
-             person.src = personTom;
-             brugerSvar--;
+        // Brugerens svar bliver det nummer person, der klikkes på - Vi starter på 0, derfor lægger vi 1 til
+        brugerSvar = i + 1;
 
-           } else {
+        // Her henter vi alle personer
+        const allePersoner = document.querySelectorAll(".person");
 
-             // Hvis personen ikke er valgt, bliver den udfyldt
-             person.dataset.valgt = "true";
-             person.src = personFyldt;
-             brugerSvar++;
-           }
+        // Det går igennem alle personer
+        allePersoner.forEach((person, index) => {
 
-           // Videre-knappen vises kun, hvis brugeren har valgt mindst én person
-           if (brugerSvar > 0) {
-             videreBtn.style.display = "block";
-           } else {
-             videreBtn.style.display = "none";
-           }
-         }
-       });
+          // Hvis personen er før eller lig med den valgte person, skal den være fyldt
+          if (index < brugerSvar) {
+            person.src = personFyldt;
+          } else {
+            // Resten skal være tomme
+            person.src = personTom;
+          }
+        });
 
-        // Her sætter vi personen ind i HTML containeren 
-        personer.appendChild(person);
-    }
+        // Viser videre-knappen, når brugeren har valgt et svar
+        videreBtn.style.display = "block";
+      }
+    });
+
+    // Her sætter vi personen ind i HTML containeren 
+    personer.appendChild(person);
+  }
 }
 
 // Her vises det rigtige svar 
