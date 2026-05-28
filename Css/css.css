@@ -10,6 +10,8 @@ body {
 
     /* Font til hele siden */
     font-family: "Oswald", sans-serif;
+
+    overflow: hidden;
 }
 
 
@@ -302,7 +304,7 @@ h1 {
     background-color: #F8F4EE;
     border: 3px solid #D8CFC8;
     border-radius: 35px;
-    padding: 50px;
+    padding: 30px;
     width: 900px;
     text-align: center;
     position: relative;
@@ -320,7 +322,7 @@ h1 {
 #udsagn {
     border: 3px solid #D8CFC8;
     border-radius: 40px;
-    padding: 40px;
+    padding: 20px;
     width: 700px;
     margin: 0 auto 50px auto;
     background-color: #F4EAE7;
@@ -377,4 +379,24 @@ h1 {
     line-height: 1.5;
     color: #4A423D;
     margin: 0;
+}
+
+
+@media screen and (max-width: 1440px) {
+
+    h1 {
+        font-size: 60px;
+    }
+
+    #statistikSide {
+        width: 95%;
+        height: 100vh;
+    }
+
+    button {
+        width: 240px;
+        height: 85px;
+        font-size: 30px;
+    }
+
 }
