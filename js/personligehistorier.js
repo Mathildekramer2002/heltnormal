@@ -78,5 +78,34 @@ historier.forEach(historie => {
    cardsContainer.appendChild(card);
 });
 
+// Her laver vi en funktion der viser vores video-side, den bruger den valgte historie som parameter, så den ved hvilken video og tekst der skal vises
+function visVideo(historie) {
+
+    // Her skjules siden med de 3 cards
+    personligSide.style.display = "none";
+
+    videoSide.style.display = "flex";
+
+    // Denne gør så videon til den tilgørende fortælling blier vist
+     video.src = historie.video;
+
+    // Her ændres overskriften på videosiden, så den passer til den valgte historie
+    videoNavn.textContent = `${historie.navn}, ${historie.alder}`;
+
+    // Her vises diagnosen under navnet
+    videoDiagnose.textContent = historie.diagnose;
+
+    // Dette gør at browseren indlæser den nye video, hvis man skifter historie
+    video.load();
+
+    // Her gør vi så hver gang en ny video åbnes, starter knappen altid som en play-knap
+    playPauseBtn.textContent = "▶";
+
+    // Her gør vi så vores progress bar nulstilles, når videon starter forfra
+    progressBar.value = 0;
+
+
+}
+
 
 
