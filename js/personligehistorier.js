@@ -44,6 +44,7 @@ const videoDiagnose = document.querySelector("#videoDiagnose");
 const playPauseBtn = document.querySelector("#playPauseBtn");
 const progressBar = document.querySelector("#progressBar");
 const lukVideo = document.querySelector("#lukVideo");
+const tilbageKnap = document.querySelector("#tilbageKnap");
 
 
 // Her laver vi et foreach loop, som gennegår alle vores historier i vores array
@@ -80,33 +81,37 @@ historier.forEach(historie => {
 
 // Her laver vi en funktion der viser vores video-side, den bruger den valgte historie som parameter, så den ved hvilken video og tekst der skal vises
 function visVideo(historie) {
+  // Her skjules siden med de 3 cards
+  personligSide.style.display = "none";
 
-    // Her skjules siden med de 3 cards
-    personligSide.style.display = "none";
+  videoSide.style.display = "flex";
 
-    videoSide.style.display = "flex";
+  // Her skjuler vi tilbage-knappen, når videosiden åbnes 
+  tilbageKnap.style.display = "none";
 
-    // Denne gør så videon til den tilgørende fortælling blier vist
-     video.src = historie.video;
+  // Denne gør så videon til den tilgørende fortælling blier vist
+  video.src = historie.video;
 
-    // Her ændres overskriften på videosiden, så den passer til den valgte historie
-    videoNavn.textContent = `${historie.navn}, ${historie.alder}`;
+  // Her ændres overskriften på videosiden, så den passer til den valgte historie
+  videoNavn.textContent = `${historie.navn}, ${historie.alder}`;
 
-    // Her vises diagnosen under navnet
-    videoDiagnose.textContent = historie.diagnose;
+  // Her vises diagnosen under navnet
+  videoDiagnose.textContent = historie.diagnose;
 
-    // Dette gør at browseren indlæser den nye video, hvis man skifter historie
-    video.load();
+  // Her gør vi så vores progress bar nulstilles, når videon starter forfra
+  progressBar.value = 0;
 
-    // Her starter videoen automatisk 
-    video.play();
+  // Her spoles videon tilbage til start, så den starter forfra, når den åbnes igen
+  video.currentTime = 0;
 
-    // Her gør vi så hver gang en ny video åbnes, starter knappen altid som en play-knap
-    playPauseBtn.textContent = "";
+  // Dette gør at browseren indlæser den nye video, hvis man skifter historie
+  video.load();
 
-    // Her gør vi så vores progress bar nulstilles, når videon starter forfra
-    progressBar.value = 0;
+  // Her starter videoen automatisk
+  video.play();
 
+  // Her gør vi så hver gang en ny video åbnes, starter knappen altid som en play-knap
+  playPauseBtn.textContent = "";
 }
 
 // Her laver vi funktionen til vores play/pause knap
@@ -139,6 +144,7 @@ video.addEventListener("timeupdate", () => {
 
     // Her sætter vi værdien på progressbaren, til den vi regnede ud før
     progressBar.value = procent;
+    
 });
 
 // Her gøres progress-baren interaktiv, så brugeren kan trække i den, og spole frem og tilbage i videon
@@ -157,7 +163,7 @@ lukVideo.addEventListener("click", () => {
     // Her stopper vi videon, så den ikke spiller i baggrunden
     video.pause();
 
-    // Her spoles videon tilbage til start, så den starter forfra, når den åbnes igen
+    // Her nulstiller vi videoen til start 
     video.currentTime = 0;
 
     // Her skjules video-siden
@@ -165,6 +171,9 @@ lukVideo.addEventListener("click", () => {
 
     // Her vises siden med de 3 cards igen, så brugeren har mulighed for at vælge en ny historie
     personligSide.style.display = "block";
+
+    // Her viser vi tilbage-knappen igen når man kommer ind på siden med alle cards 
+    tilbageKnap.style.display = "";
 });
 
 
