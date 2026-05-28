@@ -127,6 +127,27 @@ playPauseBtn.addEventListener("click", () => {
 
 });
 
+// Her gør vi så timeupdate kører hele tiden, mens videon er i gang og følger videoens tid
+
+video.addEventListener("timeupdate", () => {
+
+    // Her regner vi ud hvor meget af videon der er afspillet
+    const procent = (video.currenttime / video.duration) * 100;
+
+    // Her sætter vi værdien på progressbaren, til den vi regnede ud før
+    progressBar.value = procent;
+});
+
+// Her gøres progress-baren interaktiv, så brugeren kan trække i den, og spole frem og tilbage i videon
+progressBar.addEventListener("input", () => {
+
+    // Her regner vi på hvilket tidspunkt i videoen som brugeren har valgt
+    const nyTid = (progressBar.value / 100) * video.duration;
+
+    // Her sender vi videon hen til det valgte tidspunkt
+    video.currentTime = nyTid;
+});
+
 
 
 
