@@ -55,10 +55,21 @@ const forklaring=document.getElementById("forklaring");
 const naesteBtn=document.getElementById("naesteBtn");
 const quizside = document.getElementById("quizside");
 const svarIkon = document.getElementById("svarIkon");
+const sporgsmaalTekst = document.getElementById("sporgsmaalTekst");
+const progressFyld = document.getElementById("progressFyld");
 
 // Viser spørgsmålet på skærmen 
 function visUdsagn() {
     udsagn.textContent = udsagnListe[nuvaerendeUdsagn].udsagn;
+    
+    // Her opdaterer vi teksten, så brugeren kan se hvilket spørgsmål de er nået til
+    sporgsmaalTekst.textContent = "SPØRGSMÅL " + (nuvaerendeUdsagn + 1) + "/" + udsagnListe.length;
+
+    // Her regner vi ud hvor meget progress baren skal fyldes
+    let progress = ((nuvaerendeUdsagn + 1) / udsagnListe.length) * 100;
+
+    // Her ændrer vi bredden på den lilla del af progress baren
+    progressFyld.style.width = progress + "%";
 
 // Når man har svaret og trykkere videre forsvinder svarboksen igen og et nyt udsagn kommer frem 
 svarBoks.style.display = "none";
@@ -88,6 +99,11 @@ function tjekSvar(brugerSvar){
 
     // Her kommer forklaringen til udsagnet 
     forklaring.textContent = udsagnListe [nuvaerendeUdsagn].forklaring;
+    if (nuvaerendeUdsagn === udsagnListe.length - 1) {
+    naesteBtn.textContent = "Få din belønning";
+    } else {
+    naesteBtn.textContent = "Næste spørgsmål →";
+    }
 
     // Når brugeren har svaret bliver boksen synlig
     svarBoks.style.display = "block";
