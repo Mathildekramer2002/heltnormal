@@ -31,6 +31,7 @@ const personTom = "image/person-ikke-fyldt.svg";
 const personFyldt = "image/person-fyldt.svg";
 
 // Her kalder vi på alle elementerne, som vi skal bruge fra vores HTML
+
 const introBoks = document.querySelector("#introBoks");
 const spilBoks = document.querySelector("#spilBoks");
 const startBtn = document.querySelector("#startBtn");
@@ -198,6 +199,7 @@ function naesteStatistik(){
 
             personer.innerHTML = "";
             forklaringBoks.style.display = "none"; 
+            badgeBoks.style.display = "block";
             videreBtn.textContent = "Afslut";
             videreBtn.style.display = "block";
 

@@ -507,7 +507,7 @@ h1 {
     border: none !important;
     background-color: transparent !important;
     padding: 0 !important;
-    margin-bottom: 70px !important;
+    margin-bottom: 50px !important;
     margin-top: 70px !important;
     font-size: 55px !important;
 }
@@ -519,8 +519,25 @@ h1 {
     
 }
 
+/* BADGEBOKS */
+#badgeBoks {
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: 30px;
+}
 
+#badgeBoks p {
+    font-size: 28px;
+    color: #4A423D;
+    margin-bottom: 20px;
+}
 
+#badgeBoks img {
+    width: 180px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
 
 
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
