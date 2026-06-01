@@ -5,7 +5,7 @@ const bobler = [
 
     {
         id: 1,
-        navn: "Myter og fakta",
+        navn: "Myte eller fakta?",
         side: "myterogfakta.html"
     
     
