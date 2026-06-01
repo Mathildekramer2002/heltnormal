@@ -154,13 +154,18 @@ naesteBtn.addEventListener("click", function() {
     svarIkon.style.display = "none";
 
     // Her vises en afsluttende besked til brugeren
-    svar.style.marginTop = "60px";
+    svar.style.marginTop = "20px";
     svar.textContent = "Tillykke, du er færdig!";
-    forklaring.textContent = "Tak fordi du gennemførte quizzen.";
+
+    forklaring.innerHTML = `
+    Tak fordi du gennemførte quizzen.
+    <br><br>
+    `;
 
     // Her indsættes teksten om at man kan kalde sig Myte-jæger
     document.querySelector("#badgeTekst").textContent =
     "Du kan nu kalde dig Mytejæger";
+
 
     // Her vises badge-tekst og billede
     document.querySelector("#badgeTekst").style.display = "block";

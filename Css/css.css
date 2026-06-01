@@ -288,7 +288,7 @@ h1 {
     transform: translateX(-50%);
 
     width: 700px;
-    min-height: 450px;
+    min-height: 520px;
 
     background-color: #F8F4EE;
 
@@ -302,19 +302,20 @@ h1 {
     z-index: 10;
 }
 
-#svar{
+#svar {
     color: #4A423D;
     font-size: 48px;
-    margin-top: 0px;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 15px;
 }
 
-#forklaring{
+#forklaring {
     color: #4A423D;
     font-size: 30px;
     line-height: 1.5;
+
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 #svarIkon {
@@ -344,21 +345,28 @@ h1 {
 .forkertCirkel {
     background-color: #D98282;
 }
-/* CSS der styler badge og teksten */
+
+/* STYLING AF BADGE OG TEKST */
 #badgeTekst {
     font-size: 28px;
     color: #4A423D;
-    margin-top: 20px;
-    margin-bottom: 10px;
     text-align: center;
+
+    position: relative;
+    top: 60px;
+
     display: none;
 }
 
 #badge {
     width: 180px;
-    display: block;
-    margin: 0 auto 30px auto;
+    height: auto;
+
+    position: relative;
+    top: 60px;
+
     display: none;
+    margin: 0 auto 30px auto;
 }
 
 #progressOmraade {
