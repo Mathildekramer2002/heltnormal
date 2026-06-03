@@ -4,7 +4,7 @@
 const statistikker = [
   {
     id: 1,
-    udsagn: "Hvor mange børn og unge får en psykisk lidelse inden de fylder 18 år?",
+    sporsmaal: "Hvor mange børn og unge får en psykisk lidelse inden de fylder 18 år?",
     svar: 2,
     total: 10,
     forklaring:
@@ -12,14 +12,14 @@ const statistikker = [
   },
   {
     id: 2,
-    udsagn: "Hvor mange danskere får en psykiatrisk diagnose i løbet af livet?",
+    sporsmaal: "Hvor mange danskere får en psykiatrisk diagnose i løbet af livet?",
     svar: 3,
     total: 10,
     forklaring: "Hver 3. dansker får en psykiatrisk diagnose i løbet af livet.",
   },
   {
     id: 3,
-    udsagn: "Hvor mange fortæller ikke om deres psykiske sygdom, i frygt for negative kommentarer",
+    sporsmaal: "Hvor mange fortæller ikke om deres psykiske sygdom, i frygt for negative kommentarer",
     svar: 8,
     total: 10,
     forklaring: "En undersøgelse viser, at 87 % har skjult deres psykiske lidelse grundet negative erfaringer med åbenhed.",
@@ -35,7 +35,7 @@ const personFyldt = "image/person-fyldt.svg";
 const introBoks = document.querySelector("#introBoks");
 const spilBoks = document.querySelector("#spilBoks");
 const startBtn = document.querySelector("#startBtn");
-const udsagn = document.querySelector("#udsagn");
+const sporsmaal = document.querySelector("#sporsmaal");
 const personer = document.querySelector("#personer");
 const videreBtn = document.querySelector("#videreBtn");
 const forklaringBoks = document.querySelector("#forklaringBoks");
@@ -77,8 +77,8 @@ function visStatistik(){
   // Henter den statistik vi er nået til
   const statistik = statistikker[nuvaerende];
 
-  // Dette gør at udsagnet bliver vist på siden 
-  udsagn.textContent = statistik.udsagn;
+  // Dette gør at spørgsmålet bliver vist på siden 
+  sporsmaal.textContent = statistik.sporsmaal;
 
       // Her opdaterer vi teksten så brugeren kan se,
     // hvilket spørgsmål de er nået til
@@ -171,10 +171,10 @@ function visRigtigtSvar(){
         }
     });
 
-    // Her erstatter vi udsagnet med forklaringen
-    udsagn.textContent = statistik.forklaring;
+    // Her erstatter vi spørgsmålet med forklaringen
+    sporsmaal.textContent = statistik.forklaring;
 
-    // Vi skjuler boksen med udsagnet helt 
+    // Vi skjuler boksen med spørgsmålet helt 
     forklaringBoks.style.display = "none";
 
     rigtigtSvarVist = true;
@@ -194,8 +194,8 @@ function naesteStatistik(){
         if(nuvaerende < statistikker.length){
             visStatistik();
         } else {
-            udsagn.innerHTML = `Tillykke du er færdig <span class="slutUndertekst">Tak fordi du gennemførte quizzen.</span>`;
-            udsagn.classList.add("slutTekst");
+            sporsmaal.innerHTML = `Tillykke du er færdig <span class="slutUndertekst">Tak fordi du gennemførte quizzen.</span>`;
+            sporsmaal.classList.add("slutTekst");
 
             personer.innerHTML = "";
             forklaringBoks.style.display = "none"; 
