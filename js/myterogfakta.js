@@ -18,9 +18,9 @@ const udsagnListe = [
     },
     {
         id: 3,
-        udsagn: "Næste 50% Mener at mennesker med en psykisk lidelse er farligere end andre",
+        udsagn: "Næsten 50% mener at mennesker med en psykisk lidelse er farligere end andre.",
         svar: "Fakta",
-        forklaring: "En dansk undersøgelse viste, at næsten halvdelen af befolkningen mener, at personer med psykisk sygdom ofte er mere farlige end andre. Det viser, hvor stærke fordomme stadig kan være — selvom de fleste mennesker med psykisk sygdom ikke er farlige"
+        forklaring: "En dansk undersøgelse viste, at næsten halvdelen af befolkningen mener, at personer med psykisk sygdom ofte er mere farlige end andre. Det viser, hvor stærke fordomme stadig kan være — selvom de fleste mennesker med psykisk sygdom ikke er farlige."
     },
 
     {
@@ -32,9 +32,9 @@ const udsagnListe = [
 
     {
         id: 5,
-        udsagn: "6 ud af 10 personer med en psykiatrisk diagnose oplever diskrimination",
-        svar: "Myte",
-        forklaring: "En undersøgelse fra Psykiatrifonden viser, at mange oplever negative reaktioner eller forskelsbehandling på grund af deres diagnose."
+        udsagn: "Ca. 60% personer med en psykisk diagnose oplever diskrimination.",
+        svar: "Fakta",
+        forklaring: "En undersøgelse fra Psykiatrifonden viser, at mange oplever negative reaktioner eller diskrimination på grund af deres diagnose."
     }
 
 ];
