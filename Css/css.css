@@ -779,7 +779,6 @@ h1 {
 }
 
 
-
 /* Container til play-knap og progressbar */
 #videoControls {
     position: absolute;
@@ -836,6 +835,117 @@ h1 {
     width: 100%;
     accent-color: #5D4769;
 }
+
+
+/* Her placerer vi teksten og undertekst-knappen ovenpå videoen */
+#undertekstContainer {
+    position: absolute;
+
+    top: 20px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 60px;
+
+    z-index: 3;
+}
+
+/* Her styler vi teksten over undertekst-knappen */
+#undertekstContainer p {
+    margin: 0;
+
+    color: white;
+
+    font-size: 14px;
+
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+
+/* Her styler vi undertekst-knappen */
+.toggleBtn {
+    width: 70px;
+    height: 29px;
+
+    border: none;
+    border-radius: 30px;
+
+    background-color: #F8F4EE;
+
+    position: relative;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+/* Her styler vi cirklen inde i knappen */
+.toggleBtn span {
+    width: 19px;
+    height: 19px;
+    background-color: #5D4769;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    transition: 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8px;
+    font-weight: bold;
+    color: #F8F4EE;
+    
+}
+
+
+/* Her ændres farven når undertekster er slået til */
+.toggleBtn.aktiv {
+    background-color: #5D4769;
+}
+
+/* Her flyttes cirklen når knappen er aktiv */
+.toggleBtn.aktiv span {
+    left: 46px;
+    background-color: #F8F4EE;
+    color:#5D4769;
+}
+
+
+#undertekstBtn {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Her styler vi vores egne undertekster */
+#customUndertekst {
+    position: absolute;
+
+    left: 50%;
+    bottom: 150px;
+    transform: translateX(-50%);
+    z-index: 4;
+    width: 75%;
+    margin: 0;
+    color: #F8F4EE;
+    font-size: 34px;
+    font-family: "Oswald", sans-serif;
+    text-align: center;
+    line-height: 1.3;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+    display: none;
+}
+
 
 @media screen and (max-width: 1440px) {
 

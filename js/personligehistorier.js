@@ -8,7 +8,8 @@ const historier = [
         diagnose: "Angst",
         billede: "image/Anna.png",
         video: "image/video/anna.mp4",
-        kortTekst: "I lang tid troede jeg bare, at jeg tænkte for meget over tingene."
+        kortTekst: "I lang tid troede jeg bare, at jeg tænkte for meget over tingene.",
+        undertekst: "undertekster/anna.vtt"
 
     },
      {
@@ -18,7 +19,8 @@ const historier = [
         diagnose: "Autisme",
         billede: "image/Sofia.png",
         video: "image/video/sofia.mp4",
-        kortTekst: "De har aldrig haft et barn som Sofia før."
+        kortTekst: "De har aldrig haft et barn som Sofia før.",
+        undertekst: "undertekster/sofia.vtt"
 
     },
      {
@@ -45,6 +47,11 @@ const playPauseBtn = document.querySelector("#playPauseBtn");
 const progressBar = document.querySelector("#progressBar");
 const lukVideo = document.querySelector("#lukVideo");
 const tilbageKnap = document.querySelector("#tilbageKnap");
+
+// Her henter vi elementerne til vores knap der viser/skjuler underteksterne
+const undertekstSpor = document.querySelector("#undertekstSpor");
+const undertekstBtn = document.querySelector("#undertekstBtn");
+const customUndertekst = document.querySelector("#customUndertekst");
 
 
 // Her laver vi et foreach loop, som gennegår alle vores historier i vores array
@@ -104,8 +111,14 @@ function visVideo(historie) {
   // Her spoles videon tilbage til start, så den starter forfra, når den åbnes igen
   video.currentTime = 0;
 
+  undertekstSpor.src = historie.undertekst;
+  undertekstBtn.classList.remove("aktiv");
+  underteksterAktive = false;
+  customUndertekst.style.display = "none";
+
   // Dette gør at browseren indlæser den nye video, hvis man skifter historie
   video.load();
+
 
   // Her starter videoen automatisk
   video.play();
@@ -176,7 +189,45 @@ lukVideo.addEventListener("click", () => {
     tilbageKnap.style.display = "";
 });
 
+// Her holder vi styr på om undertekster er slået til
+let underteksterAktive = false;
+
+// Her gør vi det muligt at slå undertekster til og fra
+undertekstBtn.addEventListener("click", () => {
+
+    underteksterAktive = !underteksterAktive;
+
+    if (underteksterAktive) {
+        undertekstBtn.classList.add("aktiv");
+    }
+
+    else {
+        undertekstBtn.classList.remove("aktiv");
+
+        customUndertekst.style.display = "none";
+    }
+});
 
 
+// Her opdateres underteksterne løbende mens videoen afspilles
+video.addEventListener("timeupdate", () => {
 
+    const spor = video.textTracks[0];
 
+    // Browserens egne undertekster holdes skjult
+    spor.mode = "hidden";
+
+    // Hvis undertekster er slået til og der findes en aktiv undertekst
+    if (underteksterAktive && spor.activeCues.length > 0) {
+
+        customUndertekst.textContent = spor.activeCues[0].text;
+
+        customUndertekst.style.display = "block";
+    }
+
+    // Hvis der ikke er en aktiv undertekst skjules tekstfeltet
+    else {
+
+        customUndertekst.style.display = "none";
+    }
+});

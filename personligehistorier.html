@@ -30,22 +30,47 @@
         <div id="cardContainer"></div>
     </section>
 
-    <!-- Her laver vi vores videovisning, så først vises når der bliver valgt en video -->
+    <!-- Her laver vi vores videovisning, som først vises når der bliver valgt en video -->
     <section id="videoSide">
         <div id="videoInfo">
             <h2 id="videoNavn"></h2>
             <p id="videoDiagnose"></p>
         </div>
 
+    <!-- Her samler vi vores video, knapper og undertekster i en container-->
         <div id="videoWrapper">
             <button id="lukVideo">✕</button>
-            <video id="historieVideo"></video>
+
+            <!-- Her vises den vaægte video samt dens undertekst-spor-->
+            <video id="historieVideo">
+                    <track id="undertekstSpor" 
+                    kind="subtitles" 
+                    srclang="da" 
+                    label="Dansk">
+            </video>
+
+            <!-- Her viser vi vores egne undertekster ovenpå videoen -->
+            <p id="customUndertekst"></p>
+
+            <!-- Her samler vi teksten og knappen til undertekster -->
+            <div id="undertekstContainer">
+            
+            
+                <!-- Her er knappen som tænder og slukker undertekster -->
+                <button id="undertekstBtn" class="toggleBtn">
+                    <span>CC</span>
+                </button>
+            
+            </div>
+            
+
             <div id="videoControls">
-        
-            <button id="playPauseBtn">▶</button>
-            <input type="range" id="progressBar" min="0" max="100" value="0">
-       </div>
-    </div>
+                <button id="playPauseBtn">▶</button>
+                <input type="range" id="progressBar" min="0" max="100" value="0">
+            </div>
+
+         </div>
+         
      </section>
 
 
