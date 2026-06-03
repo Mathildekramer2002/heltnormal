@@ -1,6 +1,5 @@
 "use strict";
 
-// Her er vores array 
 const statistikker = [
   {
     id: 1,
@@ -26,11 +25,8 @@ const statistikker = [
   },
 ];
 
-// Her definerer vi vores filer 
 const personTom = "image/person-ikke-fyldt.svg";
 const personFyldt = "image/person-fyldt.svg";
-
-// Her kalder vi på alle elementerne, som vi skal bruge fra vores HTML
 
 const introBoks = document.querySelector("#introBoks");
 const spilBoks = document.querySelector("#spilBoks");
@@ -43,165 +39,138 @@ const forklaring = document.querySelector("#forklaring");
 const sporgsmaalTekst = document.getElementById("sporgsmaalTekst");
 const progressFyld = document.getElementById("progressFyld");
 
-// Her laver vi en variabel, der holder styr på, hvilken statistik brugeren er nået til 
-let nuvaerende = 0; 
+const statistikPopup = document.querySelector("#statistikPopup");
+const statistikSvarIkon = document.querySelector("#statistikSvarIkon");
+const statistikSvarOverskrift = document.querySelector("#statistikSvarOverskrift");
+const statistikPopupForklaring = document.querySelector("#statistikPopupForklaring");
+const popupPersoner = document.querySelector("#popupPersoner");
 
-// Her laver vi en variabel der gemmer brugerens svar 
+let nuvaerende = 0;
 let brugerSvar = 0;
-
-// Holder styr på om det rigtige svar er vist 
 let rigtigtSvarVist = false;
 
-// Vi sætter en lytter på startknappen, som kalder på funktionen "start spil", når der klikkes
 startBtn.addEventListener("click", startSpil);
-
-// Vi sætter en lytter på videreknappen, som kalder på funktionen "næste statistik", når der klikkes
 videreBtn.addEventListener("click", naesteStatistik);
 
-// Nu laver vi funktionen der starter spillet 
-function startSpil(){
-
-    // Her skjuler vi introboksen 
+function startSpil() {
     introBoks.style.display = "none";
-
-    // Viser spilboksen 
     spilBoks.style.display = "block";
-
-    // Her kalder vi på funktionen der viser den første statistik 
     visStatistik();
 }
 
-// Nu laver vi en funktion der viser en statistik på siden 
-function visStatistik(){
-    
-  // Henter den statistik vi er nået til
-  const statistik = statistikker[nuvaerende];
+function visStatistik() {
+    const statistik = statistikker[nuvaerende];
 
-  // Dette gør at spørgsmålet bliver vist på siden 
-  sporsmaal.textContent = statistik.sporsmaal;
+    sporsmaal.textContent = statistik.sporsmaal;
 
-      // Her opdaterer vi teksten så brugeren kan se,
-    // hvilket spørgsmål de er nået til
-    sporgsmaalTekst.textContent = 
+    sporgsmaalTekst.textContent =
     "SPØRGSMÅL " + (nuvaerende + 1) + "/" + statistikker.length;
 
-    // Her regner vi ud hvor meget progress baren skal fyldes
     let progress = ((nuvaerende + 1) / statistikker.length) * 100;
-
-    // Her ændrer vi bredden på den lilla progress bar
     progressFyld.style.width = progress + "%";
 
-  // Her tømmer vi containeren for fyldte personer 
-  personer.innerHTML = "";
+    personer.innerHTML = "";
+    forklaringBoks.style.display = "none";
+    forklaring.textContent = "";
 
-  // Her skjuler vi forklaringsboksen indtil brugeren har svaret
-  forklaringBoks.style.display = "none";
+    videreBtn.style.display = "none";
+    videreBtn.textContent = "Se svar";
 
-  // Her nulstilles forklaringsteksen 
-  forklaring.textContent = "";
+    statistikPopup.style.display = "none";
+    popupPersoner.innerHTML = "";
 
-  // Her skjuler vi videre knappen indtil brugeren har svaret 
-  videreBtn.style.display = "none"; 
+    brugerSvar = 0;
+    rigtigtSvarVist = false;
 
-  videreBtn.textContent = "Se svar";
+    for (let i = 0; i < statistik.total; i++) {
+        const person = document.createElement("img");
 
-  // Her nulstiller vi brugerens svar
-  brugerSvar = 0;
-  rigtigtSvarVist = false;
+        person.src = personTom;
+        person.classList.add("person");
+        person.dataset.valgt = "false";
 
-  // Her laver vi et loop der viser det antal personer der skal være total 
-  for (let i = 0; i < statistik.total; i++) {
+        person.addEventListener("click", () => {
+            if (rigtigtSvarVist === false) {
+                brugerSvar = i + 1;
 
-    // Opretter billeder 
-    const person = document.createElement ("img");
+                const allePersoner = document.querySelectorAll("#personer .person");
 
-    // Alle personer starter som tomme 
-    person.src = personTom;
+                allePersoner.forEach((person, index) => {
+                    if (index < brugerSvar) {
+                        person.src = personFyldt;
+                    } else {
+                        person.src = personTom;
+                    }
+                });
 
-    // Giver billedet klassen "person" 
-    person.classList.add("person");
-
-    // Gemmer om er valgt eller ej
-    person.dataset.valgt = "false";
-
-    // Her lytter vi efter klik på personen
-    person.addEventListener("click", () => {
-
-      // Brugeren må kun ændre sit svar, før det rigtige svar vises
-        if (rigtigtSvarVist === false) {
-
-        // Brugerens svar bliver det nummer person, der klikkes på - Vi starter på 0, derfor lægger vi 1 til
-        brugerSvar = i + 1;
-
-        // Her henter vi alle personer
-        const allePersoner = document.querySelectorAll(".person");
-
-        // Det går igennem alle personer
-        allePersoner.forEach((person, index) => {
-
-          // Hvis personen er før eller lig med den valgte person, skal den være fyldt
-          if (index < brugerSvar) {
-            person.src = personFyldt;
-          } else {
-            // Resten skal være tomme
-            person.src = personTom;
-          }
+                videreBtn.style.display = "flex";
+            }
         });
 
-        // Viser videre-knappen, når brugeren har valgt et svar
-        videreBtn.style.display = "block";
-      }
-    });
-
-    // Her sætter vi personen ind i HTML containeren 
-    personer.appendChild(person);
-  }
+        personer.appendChild(person);
+    }
 }
 
-// Her vises det rigtige svar 
-function visRigtigtSvar(){
+function visRigtigtSvar() {
     const statistik = statistikker[nuvaerende];
-    const allePersoner = document.querySelectorAll(".person");
 
-    allePersoner.forEach((person, index) => {
-        if (index < statistik.svar){
+    popupPersoner.innerHTML = "";
+
+    if (brugerSvar === statistik.svar) {
+        statistikSvarIkon.textContent = "✓";
+        statistikSvarIkon.className = "korrektCirkel";
+        statistikSvarOverskrift.textContent = "Korrekt!";
+    } else {
+        statistikSvarIkon.textContent = "✕";
+        statistikSvarIkon.className = "forkertCirkel";
+        statistikSvarOverskrift.textContent = "Forkert!";
+    }
+
+    statistikPopupForklaring.textContent = statistik.forklaring;
+
+    for (let i = 0; i < statistik.total; i++) {
+        const person = document.createElement("img");
+
+        person.classList.add("person");
+
+        if (i < statistik.svar) {
             person.src = personFyldt;
         } else {
             person.src = personTom;
         }
-    });
 
-    // Her erstatter vi spørgsmålet med forklaringen
-    sporsmaal.textContent = statistik.forklaring;
+        popupPersoner.appendChild(person);
+    }
 
-    // Vi skjuler boksen med spørgsmålet helt 
-    forklaringBoks.style.display = "none";
-
+    statistikPopup.style.display = "block";
     rigtigtSvarVist = true;
+
+    if (nuvaerende === statistikker.length - 1) {
+        videreBtn.textContent = "Få din belønning";
+    } else {
+        videreBtn.textContent = "Næste spørgsmål →";
+    }
 }
 
-// Her styre vi knapperne videre/næste/afslut
-function naesteStatistik(){
-    if (rigtigtSvarVist === false){
+function naesteStatistik() {
+    if (rigtigtSvarVist === false) {
         visRigtigtSvar();
-        if (nuvaerende === statistikker.length - 1) {
-    videreBtn.textContent = "Få din belønning";
     } else {
-    videreBtn.textContent = "Næste spørgsmål →";
-    }
-    } else {
+        statistikPopup.style.display = "none";
         nuvaerende++;
-        if(nuvaerende < statistikker.length){
+
+        if (nuvaerende < statistikker.length) {
             visStatistik();
         } else {
             sporsmaal.innerHTML = `Tillykke du er færdig <span class="slutUndertekst">Tak fordi du gennemførte quizzen.</span>`;
             sporsmaal.classList.add("slutTekst");
 
             personer.innerHTML = "";
-            forklaringBoks.style.display = "none"; 
+            forklaringBoks.style.display = "none";
             badgeBoks.style.display = "block";
+
             videreBtn.textContent = "Afslut";
-            videreBtn.style.display = "block";
+            videreBtn.style.display = "flex";
 
             videreBtn.onclick = () => {
                 window.location.href = "index.html";
@@ -209,5 +178,3 @@ function naesteStatistik(){
         }
     }
 }
-
-

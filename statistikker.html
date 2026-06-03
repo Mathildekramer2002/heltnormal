@@ -31,24 +31,34 @@
         </div>
 
         <div id="introBoks">
-            <p>Her skal du gætte, hvor mange personer der passer på spørgsmålet. <br>
+            <p>Her skal du gætte, hvor mange personer der passer på udsagnet. <br>
                 Klik på det antal personer, du tror der passer og tryk videre.
             </p>
             <button id="startBtn">Start</button>
         </div>
         <div id="spilBoks" style="display: none;">
-            <h2 id="sporsmaal"></h2>
-            <div id="personer"></div>
+             <h2 id="sporsmaal"></h2>
+             <div id="personer"></div>
 
             <div id="badgeBoks" style="display: none;">
                 <p>Tillykke du kan nu kalde dig statistikmester</p>
                 <img src="/image/ChatGPT Image 28. maj 2026, 15.27.23.png" alt="Statistikmester badge">
-            </div>
+             </div>
 
-            <button id="videreBtn" style="display: none;"></button>
-            <div id="forklaringBoks" style="display: none;"></div>
-            <p id="forklaring"></p>
-        </div>
+          <button id="videreBtn" style="display: none;"></button>
+
+            <div id="statistikPopup" style="display: none;">
+                <div id="statistikSvarIkon"></div>
+                 <h2 id="statistikSvarOverskrift"></h2>
+                 <p id="statistikPopupForklaring"></p>
+                 <div id="popupPersoner"></div>
+
+                 <button id="popupNaesteBtn">Næste spørgsmål →</button>
+         </div>
+
+    <div id="forklaringBoks" style="display: none;"></div>
+    <p id="forklaring"></p>
+</div>
 
     </section>
     
