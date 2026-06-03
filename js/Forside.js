@@ -1,7 +1,7 @@
 "use strict";
 
 // Her kommer vores array 
-const bobler = [
+const kategorier = [
 
     {
         id: 1,
@@ -27,29 +27,29 @@ const bobler = [
 ];
 
 
-// Her kalder vi på vores bobbel container i vores html
-const container = document.querySelector ("#bobbelContainer");
+// Her kalder vi på vores katrgori container i vores html
+const container = document.querySelector ("#kategoriContainer");
 
-// Her laver vi et foreach loop der gennemgår hver bobbel
-bobler.forEach(boblerne => {
+// Her laver vi et foreach loop der gennemgår hver kategori
+kategorier.forEach(kategorierne => {
 
-    // Her opretter vi en ny div for hver bobbel
-    const bobbel = document.createElement("div");
+    // Her opretter vi en ny div for hver kategori
+    const kategori = document.createElement("div");
 
     // Her giver vi boblerne en klasse, så vi kan style dem på én gang i CSS
-    bobbel.classList.add("bobbel");
+    kategori.classList.add("kategori");
 
-    // her tilføjer vi et navn til hver bobbel
-    bobbel.textContent = boblerne.navn;
+    // her tilføjer vi et navn til hver kategori
+    kategori.textContent = kategorierne.navn;
 
     // Her sætter vi en lytter på på boblerne, så de reagere på klik
-    bobbel.addEventListener("click", () => {
+    kategori.addEventListener("click", () => {
 
         // Her sendes brugeren videre ved klik på boblen
-        window.location.href = boblerne.side;
+        window.location.href = kategorierne.side;
     });
 
     // Her lægger vi vores bobler ind i vores container i vores html
-    container.appendChild(bobbel);
+    container.appendChild(kategori);
 
 });
