@@ -449,7 +449,7 @@ h1 {
 }
 
 /* Styling af udsagnet */
-#udsagn {
+#sporgsmaal {
     border: 3px solid #D8CFC8;
     border-radius: 40px;
     padding: 20px;
@@ -530,7 +530,7 @@ h1 {
 /* BADGEBOKS */
 #badgeBoks {
     text-align: center;
-    margin-top: -20px;
+    margin-top: -110px;
     margin-bottom: 30px;
 }
 
@@ -545,6 +545,95 @@ h1 {
     height: auto;
     display: block;
     margin: 0 auto;
+}
+
+/* Styling af hele popup-vinduet */
+#statistikPopup {
+    display: none;
+    position: fixed;
+
+    top: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 900px;
+    min-height: 520px;
+
+    background-color: #F8F4EE;
+
+    border: 3px solid #D8CFC8;
+    border-radius: 30px;
+
+    padding: 50px;
+
+    text-align: center;
+
+    z-index: 10;
+}
+
+/* Styling af ikonet som viser det korrekte svar */
+#statistikSvarIkon {
+    width: 85px;
+    height: 85px;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto;
+
+    color: white;
+    font-size: 55px;
+    font-weight: bold;
+}
+
+/* Styling af overskriften i popup-vinduet */
+#statistikSvarOverskrift {
+    color: #4A423D;
+    font-size: 48px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+/* Styling af forklaringsteksten i popup-vinduet */
+#statistikPopupForklaring {
+    color: #4A423D;
+    font-size: 20px;
+    line-height: 1;
+
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+/* Container til personikonerne som viser svaret visuelt */
+#popupPersoner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+/* Styling af knappen som går videre til næste spørgsmål */
+#popupNaesteBtn {
+    width: 420px;
+    height: 70px;
+
+    border: none;
+    border-radius: 12px;
+
+    background-color: #5D4769;
+    color: white;
+
+    font-size: 24px;
+    font-weight: bold;
+    font-family: "Oswald", sans-serif;
+
+    display: block;
+    margin: 30px auto 0 auto;
 }
 
 
