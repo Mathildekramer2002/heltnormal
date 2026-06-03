@@ -27,7 +27,7 @@ const kategorier = [
 ];
 
 
-// Her kalder vi på vores katrgori container i vores html
+// Her kalder vi på vores kategori-container i vores html
 const container = document.querySelector ("#kategoriContainer");
 
 // Her laver vi et foreach loop der gennemgår hver kategori
