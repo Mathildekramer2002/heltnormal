@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -14,44 +15,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/Css/css.css">
+
 </head>
+
 <body>
 
     <!-- Her er vores tilbage knap -->
     <a href="index.html" id="tilbageKnap" class="tilbageKnap">←</a>
     
     <!-- Her laver vi en oversigt over vores 3 fortællinger igennem cards-->
-     <section id="personligSide">
+    <section id="personligSide">
         <h1> Peronlige Historier </h1>
         <p id="underTitel"> Vælg en historie og lyt med</p>
         <div id="cardContainer"></div>
-     </section>
+    </section>
 
-     <!-- Her laver vi vores videovisning, så først vises når der bliver valgt en video -->
-
-     <section id="videoSide">
+    <!-- Her laver vi vores videovisning, så først vises når der bliver valgt en video -->
+    <section id="videoSide">
         <button id="lukVideo"> x </button>
         <div id="videoInfo">
             <h2 id="videoNavn"></h2>
             <p id="videoDiagnose"></p>
         </div>
-       <video id="historieVideo"></video>
 
-       <div id="videoControls">
+       <video id="historieVideo"></video>
+        <div id="videoControls">
             <button id="playPauseBtn">▶</button>
             <input type="range" id="progressBar" min="0" max="100" value="0">
        </div>
      </section>
 
 
-
+    <script src="/js/personligehistorier.js"></script>
     
-
-
-
-
-
-
-<script src="/js/personligehistorier.js"></script>
 </body>
 </html>

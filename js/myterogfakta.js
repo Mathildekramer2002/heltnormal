@@ -71,8 +71,8 @@ function visUdsagn() {
     // Her ændrer vi bredden på den lilla del af progress baren
     progressFyld.style.width = progress + "%";
 
-// Når man har svaret og trykkere videre forsvinder svarboksen igen og et nyt udsagn kommer frem 
-svarBoks.style.display = "none";
+    // Når man har svaret og trykkere videre forsvinder svarboksen igen og et nyt udsagn kommer frem 
+    svarBoks.style.display = "none";
 }
 
 // Vi kalder på funktionen så udsagnet vises 
@@ -90,19 +90,21 @@ function tjekSvar(brugerSvar){
         svarIkon.textContent = "✓";
         svarIkon.className = "korrektCirkel";
         svar.textContent = "Korrekt!";
-    } else {
+
+    }   else {
         // Hvis svaret er forkert så kommer der til at stå forkert
         svarIkon.textContent = "✕";
         svarIkon.className = "forkertCirkel";
         svar.textContent = "Forkert!";
     }
 
-    // Her kommer forklaringen til udsagnet 
-    forklaring.textContent = udsagnListe [nuvaerendeUdsagn].forklaring;
-    if (nuvaerendeUdsagn === udsagnListe.length - 1) {
-    naesteBtn.textContent = "Få din belønning";
-    } else {
-    naesteBtn.textContent = "Næste spørgsmål →";
+        // Her kommer forklaringen til udsagnet 
+        forklaring.textContent = udsagnListe [nuvaerendeUdsagn].forklaring;
+        if (nuvaerendeUdsagn === udsagnListe.length - 1) {
+        naesteBtn.textContent = "Få din belønning";
+        
+        } else {
+        naesteBtn.textContent = "Næste spørgsmål →";
     }
 
     // Når brugeren har svaret bliver boksen synlig

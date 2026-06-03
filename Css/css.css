@@ -110,7 +110,7 @@ h1 {
 }
 
 /* Styling af containeren som indeholder alle knapperne */
-#bobbelContainer {
+#kategoriContainer {
 
     display: flex;
     /* Lægger knapperne under hinanden */
@@ -124,7 +124,7 @@ h1 {
 
 
 /* Styling af hver enkelt knap */
-.bobbel {
+.kategori {
 
     width: 450px;
     height: 90px;

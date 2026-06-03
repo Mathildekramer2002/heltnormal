@@ -66,13 +66,13 @@ historier.forEach(historie => {
     <p class="diagnose">${historie.diagnose}</p>
     <p>${historie.kortTekst}</p>
     <button class="cardPlayBtn">▶</button>
-`;
+    `;
 
    // Her tilføjer vi en klikfunktion til vores card
 
    card.addEventListener("click", () => {
     visVideo(historie);
-   });
+    });
 
    // Her sætter vi vores card ind i vores container i vores HTML
 
@@ -111,7 +111,7 @@ function visVideo(historie) {
   video.play();
 
   // Her gør vi så hver gang en ny video åbnes, starter knappen altid som en play-knap
-  playPauseBtn.textContent = "";
+  playPauseBtn.textContent = "∣∣";
 }
 
 // Her laver vi funktionen til vores play/pause knap
@@ -123,7 +123,7 @@ playPauseBtn.addEventListener("click", () => {
         video.play();
 
         // Her ændrer vi ikonet til en pause knap, hvis videon spiller
-    playPauseBtn.textContent = "";
+        playPauseBtn.textContent = "∣∣";
 
     }
 
