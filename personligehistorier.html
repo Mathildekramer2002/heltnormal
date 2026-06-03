@@ -32,17 +32,20 @@
 
     <!-- Her laver vi vores videovisning, så først vises når der bliver valgt en video -->
     <section id="videoSide">
-        <button id="lukVideo"> x </button>
         <div id="videoInfo">
             <h2 id="videoNavn"></h2>
             <p id="videoDiagnose"></p>
         </div>
 
-       <video id="historieVideo"></video>
-        <div id="videoControls">
+        <div id="videoWrapper">
+            <button id="lukVideo">✕</button>
+            <video id="historieVideo"></video>
+            <div id="videoControls">
+        
             <button id="playPauseBtn">▶</button>
             <input type="range" id="progressBar" min="0" max="100" value="0">
        </div>
+    </div>
      </section>
 
 
