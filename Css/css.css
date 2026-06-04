@@ -311,7 +311,7 @@ h1 {
 
 #forklaring {
     color: #4A423D;
-    font-size: 30px;
+    font-size: 28px;
     line-height: 1.5;
 
     margin-top: 10px;
@@ -503,13 +503,7 @@ h1 {
     margin: 40px auto 0 auto;
 }
 
-/* Styling af forklaringsteksten */
-#forklaring {
-    font-size: 28px;
-    line-height: 1.5;
-    color: #4A423D;
-    margin: 0;
-}
+
 
 .slutTekst {
     border: none !important;

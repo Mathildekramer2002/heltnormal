@@ -6,7 +6,7 @@ const historier = [
         navn: "Anna",
         alder: "19 år",
         diagnose: "Angst",
-        billede: "image/Anna.png",
+        billede: "image/anna.png",
         video: "image/video/anna.mp4",
         kortTekst: "I lang tid troede jeg bare, at jeg tænkte for meget over tingene.",
         undertekst: "undertekster/anna.vtt"
@@ -17,7 +17,7 @@ const historier = [
         navn: "Sofia",
         alder: "9 år",
         diagnose: "Autisme",
-        billede: "image/Sofia.png",
+        billede: "image/sofia.png",
         video: "image/video/sofia.mp4",
         kortTekst: "De har aldrig haft et barn som Sofia før.",
         undertekst: "undertekster/sofia.vtt"
@@ -28,7 +28,7 @@ const historier = [
         navn: "Cecilie",
         alder: "25 år",
         diagnose: "ADHD",
-        billede: "image/Cecilie.png",
+        billede: "image/cecilie.png",
         video: "image/cecilie.mp4",
         kortTekst: "Jeg havde svært ved at passe ind."
 
