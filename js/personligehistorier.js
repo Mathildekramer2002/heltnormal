@@ -9,7 +9,7 @@ const historier = [
         billede: "image/anna.png",
         video: "image/video/anna.mp4",
         kortTekst: "I lang tid troede jeg bare, at jeg tænkte for meget over tingene.",
-        undertekst: "undertekster/anna.vtt"
+        undertekst: "Undertekster/anna.vtt"
 
     },
      {
@@ -20,7 +20,7 @@ const historier = [
         billede: "image/sofia.png",
         video: "image/video/sofia.mp4",
         kortTekst: "De har aldrig haft et barn som Sofia før.",
-        undertekst: "undertekster/sofia.vtt"
+        undertekst: "Undertekster/sofia.vtt"
 
     },
      {
