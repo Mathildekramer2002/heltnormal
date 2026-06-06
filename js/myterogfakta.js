@@ -32,7 +32,7 @@ const udsagnListe = [
 
     {
         id: 5,
-        udsagn: "Ca. 60% personer med en psykisk diagnose oplever diskrimination.",
+        udsagn: "Ca. 60% af dem, med en psykisk diagnose oplever diskrimination.",
         svar: "Fakta",
         forklaring: "En undersøgelse fra Psykiatrifonden viser, at mange oplever negative reaktioner eller diskrimination på grund af deres diagnose."
     }
