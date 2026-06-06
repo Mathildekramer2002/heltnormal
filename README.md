@@ -9,7 +9,7 @@ normalisere psykiske sygdomme, samt nedbryde fordomme og stigma.
 
 Vi har valideret vores CSS og HTML, for at sikre der ikke er nogle warnings.
 - HTML er valideret igennem W3C Markup validator
-- CSS er er valideret CSS Portal validator
+- CSS er valideret CSS Portal validator
 
 Her er screenshots det bekræfter, af vores filer er valideret ud fejl
 
@@ -29,7 +29,7 @@ Her er screenshots det bekræfter, af vores filer er valideret ud fejl
 <img src="./image/cssvalidering.png" width="250">
 </p>
 
-# Samarbejde og udviklingsprocess
+# Samarbejde og udviklingsproces
 
 ## GitHub og samarbejde
 Via GitHub har vi samarbejdet om den samme kode. Ved at oprette et repository, 
@@ -66,6 +66,12 @@ samt hvor mange commits vi hver især har lavet.
   <img src="./image/frederikkecommits.png" width="200">
   <img src="./image/mathildecommits.png" width="200">
 </p>
+
+# Centrale valg i udviklingen
+Vi valgte at opbygge vores indhold ud fra JavaScript-arrays, da det gjorde det muligt at generere indhold dynamisk og nemt vedligeholde løsningen.
+Vi valgte desuden at udvikle vores egne videokontroller, så vi kunne tilføje funktioner som brugerdefinerede undertekster og skabe et mere ensartet visuelt udtryk.
+Endelig valgte vi at fokusere på korte interaktive aktiviteter, da målgruppen hurtigt skulle kunne engagere sig i emnet psykisk sygdom.
+
 
 # Webkonventioner
 I vores projekt har vi forsøgt at følge almindelige webkonventioner for,
@@ -215,29 +221,34 @@ Nogle brugere har lettere ved at følge historien, når de både kan høre og l�
 Samtidig giver funktionen brugeren mulighed for selv at vælge, om underteksterne skal vises, 
 hvilket skaber en mere fleksibel og brugervenlig oplevelse.
 
+# Relevante JavaScript-teknologier
+I projektet har vi anvendt flere centrale JavaScript-teknologier og metoder. Vi har blandt andet brugt arrays og objekter til at strukturere vores data, eksempelvis til de personlige historier. Derudover har vi anvendt DOM-manipulation til at oprette og ændre indhold på siden dynamisk.
+
+Ved hjælp af `addEventListener()` har vi gjort løsningen interaktiv, så brugeren kan starte quizzer, styre videoer og slå undertekster til og fra. Vi har også anvendt `if/else-strukturer` og `booleans` til at håndtere forskellige tilstande og brugerhandlinger.
+
 # ORCA tabel
 
-Vi har brugt ORCA metoden til at identificerer de vigtigste objekter i vores løsning. 
-Vi har primært. fokuseret på O og A, så vores objekter samt deres tilhørende atributter. 
+Vi har brugt ORCA metoden til at identificere de vigtigste objekter i vores løsning. 
+Vi har primært. fokuseret på O og A, så vores objekter samt deres tilhørende attributter. 
 Dette har vi gjort på både forsiden og de 3 undersider "Myter eller fakta", "Statistikker" og "Personlige historier".
 
 ### Eksempel på ORCA tabel
 
 Her ses et eksempel på den ORCA tabel vi lavede til vores personlige historier-side, 
 hvor man finder videoerne. Her har vi defineret vores objekter som er fortællingerne, 
-samt deres atributter som fx. id, navn, alder osv. 
+samt deres attributter som fx. id, navn, alder osv. 
 
-| Objekt/Atributter | Id | Navn | Alder | Diagnose | Billede | Video | Kort tekst | Undertekster |
+| Objekt/Attributter | Id | Navn | Alder | Diagnose | Billede | Video | Kort tekst | Undertekster |
 | ----------------- | -- | ---- | ----- | -------- | ------- | ----- | ---------- | ------------ |
 | fortælling 1      | 1  | Anna | 19 år | Angst    | img/..  | mp4/..|       ""   | vtt/..       |
 | fortælling 2      | 2  | sofia| 8 år  | Autisme  | img/..  | mp4/..|       ""   | vtt/..       |
 | fortælling 3      | 3  | Cecilie | 25 år | ADHD  | img/..  | mp4/..|       ""   | vtt/..       |
 
-Vi har efterfølgende omsat vores ORCA-tabel til et array i vores Java-script struktur. 
-Hver historie er repræsenteret som objekter, og atributterne som properties.
+Vi har efterfølgende omsat vores ORCA-tabel til et array i vores JavaScript struktur. 
+Hver historie er repræsenteret som objekter, og attributterne som properties.
 
 # Eksempel på array
-Her er et eksempel på hvordan, vores ORCA-tabel ser ud, efter vi har omsat den til et array i vores Java-script
+Her er et eksempel på hvordan, vores ORCA-tabel ser ud, efter vi har omsat den til et array i vores JavaScript
 
 
 ```javascript
@@ -313,7 +324,7 @@ Dette har vi gjort for holde koden overskuelig, samt lettere for os at forstå.
 Vi har beskrevet i kommentarene hvad den efterfølgene kode gør, 
 og på den måde gjort det nemt at navigerere i, både for os selv, men også for andre. 
 
-Med kommetarer har vi også kunne dele vores kode op i nogle små sektioner, 
+Med kommentarer har vi også kunne dele vores kode op i nogle små sektioner, 
 så man ved hvor man skal lede hvis man nu leder efter en specifik funktion.
 
 ### Eksempel
@@ -347,3 +358,29 @@ Kommentarerne gør det lettere at forstå logikken bag funktionen, da man hurtig
 hvordan knappen styrer videoafspilningen og skifter ikon mellem play og pause.
 Vi har forsøgt at skrive beskrivende kommentarer gennem hele projektet, 
 så både vi selv og andre udviklere lettere kan læse, forstå og vedligeholde koden.
+
+# Brugen af AI-værktøjer
+I udviklingen af vores prototype har vi benyttet ChatGPT som et sparrings- og læringsværktøj. ChatGPT er blandt andet blevet anvendt til at få hjælp til at komme i gang med nye funktioner, videreudvikle idéer, fejlfinde i kode samt få forklaret tekniske sammenhænge i HTML, CSS og JavaScript.
+
+Værktøjet har fungeret som en støtte gennem projektforløbet, men alle løsninger er blevet vurderet, tilpasset og implementeret af gruppen selv. Formålet med brugen af ChatGPT har været at understøtte vores læring og hjælpe os videre i situationer, hvor vi havde brug for sparring eller en ny indgangsvinkel til en udfordring.
+
+Nedenstående links viser udvalgte eksempler på, hvordan ChatGPT er blevet anvendt i projektet. Eksemplerne repræsenterer forskellige typer af sparring og er ikke en fuld liste over alle de samtaler, der har fundet sted i løbet af udviklingsprocessen.
+
+## Links
+Her er nogle links til de chats, der er blevet brugt til at hjælpe os i mål med vores løsning
+
+- ### Undertekster
+https://chatgpt.com/share/6a246c36-2164-83eb-8b67-301ef9dc3ce1
+
+- ### Vtt filer
+https://chatgpt.com/share/6a246d4f-2b04-83eb-9660-2359108bd29c
+
+- ### Hjælp til at komme i gang med statistik siden
+https://chatgpt.com/share/6a24726d-5708-83eb-8735-9c090547fc0b
+
+- ### Fejlfinding i kode
+https://chatgpt.com/share/6a24757b-83b4-83eb-a79b-3699bf20f97e
+
+
+De delte samtaler er inkluderet for at skabe gennemsigtighed omkring brugen af AI i projektet og for at dokumentere, hvordan ChatGPT har været anvendt som et understøttende værktøj i vores arbejdsproces.
+
